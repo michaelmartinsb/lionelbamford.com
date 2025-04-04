@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lionel Bamford | Summer 2025</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: #888;
+        }
+        
+        .search-cart {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-cart a {
+            margin-left: 15px;
+            text-decoration: none;
+            color: #333;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 500px;
+            text-align: center;
+            margin: 40px 0 60px;
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        
+        .hero-video::-webkit-media-controls {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .hero-video:hover::-webkit-media-controls {
+            opacity: 1;
+        }
+        
+        /* For Firefox */
+        .hero-video {
+            opacity: 1;
+        }
+        
+        .hero-video:not(:hover) {
+            opacity: 1;
+        }
+        
+        .hero-content {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 30px 50px;
+            border-radius: 4px;
+            backdrop-filter: blur(5px);
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #444;
+        }
+        
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            margin: 0 0 30px;
+            font-weight: 400;
+            color: #555;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .section-container {
+            margin-bottom: 100px;
+        }
+        
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .product-card {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image {
+            width: 100%;
+            aspect-ratio: 3/4;
+            background-color: #f9f9f9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .product-image:hover {
+            transform: scale(1.03);
+        }
+        
+        .product-title {
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+        
+        .product-price {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* Category Section */
+        .category-section {
+            margin: 0 auto 100px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .category-card {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .category-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+        }
+        
+        .category-overlay:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .category-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        
+        /* About / Press Section */
+        .press-section {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin: 0 auto 100px;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .press-image {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .press-quote {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .press-source {
+            font-weight: 500;
+            color: #333;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            background-color: #f9f9f9;
+            padding: 60px 0;
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        
+        .newsletter h3 {
+            font-weight: 400;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .newsletter p {
+            margin-bottom: 25px;
+            color: #666;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-right: none;
+            font-size: 0.9rem;
+        }
+        
+        .newsletter-button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .newsletter-button:hover {
+            background-color: #555;
+        }
+        
+        /* Footer */
+        footer {
+            border-top: 1px solid #eee;
+            padding: 50px 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .footer-column h4 {
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #666;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #333;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            font-size: 0.75rem;
+            color: #888;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            margin: 0 10px;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .category-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">SHOP</a></li>
+                <li><a href="#">NEW</a></li>
+                <li><a href="#">COLLECTIONS</a></li>
+                <li><a href="#">BLOG</a></li>
+                <li><a href="#">ABOUT</a></li>
+            </ul>
+        </nav>
+        <div class="search-cart">
+            <a href="#">Search</a>
+            <a href="#">Cart (0)</a>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <video class="hero-video" loop muted playsinline controls poster="/api/placeholder/1200/500">
+            <source src="https://cdnjs.cloudflare.com/ajax/libs/Plyr/3.6.8/demo/beach.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-content">
+            <h1>Lionel Bamford</h1>
+            <h2>Summer 2025</h2>
+        </div>
+    </section>
+    
+    <section class="section-container">
+        <h3 class="section-title">NEW ARRIVALS</h3>
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image"><img src="/api/placeholder/240/320" alt="Product placeholder"></div>
+                <h4 class="product-title">Linen Blend Shirt</h4>
+                <p class="product-price">$85.00</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="/api/placeholder/240/320" alt="Product placeholder"></div>
+                <h4 class="product-title">Relaxed Chinos</h4>
+                <p class="product-price">$75.00</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="/api/placeholder/240/320" alt="Product placeholder"></div>
+                <h4 class="product-title">Summer Jacket</h4>
+                <p class="product-price">$110.00</p>
+            </div>
+            <div class="product-card">
+                <div class="product-image"><img src="/api/placeholder/240/320" alt="Product placeholder"></div>
+                <h4 class="product-title">Signature Tee</h4>
+                <p class="product-price">$45.00</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="category-section">
+        <div class="category-card">
+            <img src="/api/placeholder/300/400" alt="Casual category" class="category-image">
+            <div class="category-overlay">
+                <h3 class="category-title">CASUAL</h3>
+            </div>
+        </div>
+        <div class="category-card">
+            <img src="/api/placeholder/300/400" alt="Beach category" class="category-image">
+            <div class="category-overlay">
+                <h3 class="category-title">BEACH</h3>
+            </div>
+        </div>
+        <div class="category-card">
+            <img src="/api/placeholder/300/400" alt="Evening category" class="category-image">
+            <div class="category-overlay">
+                <h3 class="category-title">EVENING</h3>
+            </div>
+        </div>
+    </section>
+    
+    <section class="press-section">
+        <img src="/api/placeholder/800/450" alt="Press feature" class="press-image">
+        <p class="press-quote">"Lionel Bamford perfectly balances quality craftsmanship with understated elegance in this stunning summer collection."</p>
+        <p class="press-source">— Vogue</p>
+    </section>
+    
+    <section class="newsletter">
+        <h3>JOIN OUR NEWSLETTER</h3>
+        <p>Be the first to know about new collections, exclusive offers, and seasonal style guides.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" class="newsletter-input" required>
+            <button type="submit" class="newsletter-button">SUBSCRIBE</button>
+        </form>
+    </section>
+    
+    <section class="category-section">
+        <div class="category-card">
+            <img src="/api/placeholder/300/400" alt="Blog feature" class="category-image">
+            <div class="category-overlay">
+                <h3 class="category-title">FROM OUR BLOG</h3>
+            </div>
+        </div>
+        <div class="category-card">
+            <img src="/api/placeholder/300/400" alt="Styling tips" class="category-image">
+            <div class="category-overlay">
+                <h3 class="category-title">STYLING TIPS</h3>
+            </div>
+        </div>
+        <div class="category-card">
+            <img src="/api/placeholder/300/400" alt="Summer lookbook" class="category-image">
+            <div class="category-overlay">
+                <h3 class="category-title">SUMMER LOOKBOOK</h3>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping & Delivery</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>My Account</h4>
+                <ul>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Order History</a></li>
+                    <li><a href="#">Wish List</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="#">FB</a>
+            <a href="#">IG</a>
+            <a href="#">TW</a>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Lionel Bamford. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

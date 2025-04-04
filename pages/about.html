@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Lionel Bamford</title>
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="../css/normalize.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components/header.css">
+    <link rel="stylesheet" href="../css/components/categories.css">
+    <link rel="stylesheet" href="../css/components/newsletter.css">
+    <link rel="stylesheet" href="../css/components/footer.css">
+    <style>
+        /* About page specific styles */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto 60px;
+            line-height: 1.8;
+        }
+        
+        .about-image {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+            margin-bottom: 30px;
+        }
+        
+        .team-section {
+            margin: 60px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .team-member {
+            text-align: center;
+        }
+        
+        .team-photo {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+        
+        .team-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .team-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="shop.html">SHOP</a></li>
+                <li><a href="collections.html">COLLECTIONS</a></li>
+                <li><a href="blog.html">BLOG</a></li>
+                <li><a href="about.html" class="active">ABOUT</a></li>
+            </ul>
+        </nav>
+        <div class="search-cart">
+            <a href="#">Search</a>
+            <a href="#">Cart (0)</a>
+        </div>
+    </header>
+    
+    <section class="section-container">
+        <h3 class="section-title">OUR STORY</h3>
+        
+        <div class="about-content">
+            <img src="../assets/images/about/studio.jpg" alt="Lionel Bamford Studio" class="about-image">
+            
+            <p>Founded in 2018, Lionel Bamford represents a fresh approach to modern clothing. Our focus is on creating timeless pieces that combine exceptional craftsmanship with contemporary design. Each garment is thoughtfully created using premium materials and sustainable practices.</p>
+            
+            <p>The brand was established by designer Lionel Bamford after years of experience in the fashion industry. Frustrated by fast fashion and its environmental impact, Lionel set out to create a label that prioritizes quality, longevity, and ethical production.</p>
+            
+            <p>Our collections are designed to transcend seasonal trends, offering versatile pieces that can be styled in multiple ways and worn for years to come. We believe in creating fewer, better things – items that are made to last and designed to be cherished.</p>
+            
+            <h4 class="section-title team-section">OUR TEAM</h4>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="../assets/images/about/team-1.jpg" alt="Lionel Bamford" class="team-photo">
+                    <h5 class="team-name">Lionel Bamford</h5>
+                    <p class="team-role">Founder & Creative Director</p>
+                </div>
+                <div class="team-member">
+                    <img src="../assets/images/about/team-2.jpg" alt="Emma Chen" class="team-photo">
+                    <h5 class="team-name">Emma Chen</h5>
+                    <p class="team-role">Head of Design</p>
+                </div>
+                <div class="team-member">
+                    <img src="../assets/images/about/team-3.jpg" alt="Marcus Thompson" class="team-photo">
+                    <h5 class="team-name">Marcus Thompson</h5>
+                    <p class="team-role">Production Manager</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="newsletter">
+        <h3>JOIN OUR NEWSLETTER</h3>
+        <p>Be the first to know about new collections, exclusive offers, and seasonal style guides.</p>
+        <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" class="newsletter-input" required>
+            <button type="submit" class="newsletter-button">SUBSCRIBE</button>
+        </form>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Shipping & Delivery</a></li>
+                    <li><a href="#">Returns & Exchanges</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>My Account</h4>
+                <ul>
+                    <li><a href="#">Sign In</a></li>
+                    <li><a href="#">Order History</a></li>
+                    <li><a href="#">Wish List</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="about.html">Our Story</a></li>
+                    <li><a href="#">Sustainability</a></li>
+                    <li><a href="#">Store Locator</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Accessibility</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="social-links">
+            <a href="#">FB</a>
+            <a href="#">IG</a>
+            <a href="#">TW</a>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 Lionel Bamford. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript imports -->
+    <script src="../js/components/cart.js"></script>
+    <script src="../js/components/search.js"></script>
+    <script src="../js/components/newsletter.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html> 

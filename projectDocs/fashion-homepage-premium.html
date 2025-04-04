@@ -1,0 +1,1840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AESTHETIQUE | Elevated Streetwear</title>
+    <style>
+        /*------------------------------------*\
+          # CUSTOM PROPERTIES & DESIGN SYSTEM
+        \*------------------------------------*/
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap');
+        
+        :root {
+            /* Color System */
+            --color-black: #0A0A0A;
+            --color-off-black: #111111;
+            --color-dark-gray: #222222;
+            --color-gray: #555555;
+            --color-light-gray: #AAAAAA;
+            --color-off-white: #F7F7F7;
+            --color-white: #FFFFFF;
+            --color-accent: #D2B48C; /* Elegant tan accent */
+            
+            /* Typography */
+            --font-primary: 'Montserrat', sans-serif;
+            --font-secondary: 'Cormorant Garamond', serif;
+            --font-weight-thin: 200;
+            --font-weight-light: 300;
+            --font-weight-regular: 400;
+            --font-weight-medium: 500;
+            --font-weight-semibold: 600;
+            --font-weight-bold: 700;
+            --letter-spacing-tight: -0.01em;
+            --letter-spacing-normal: 0;
+            --letter-spacing-wide: 0.05em;
+            --letter-spacing-wider: 0.1em;
+            --letter-spacing-widest: 0.25em;
+            
+            /* Layout */
+            --header-height: 80px;
+            --max-width-container: 1680px; /* Expanded width for luxury feel */
+            --spacing-unit: 1rem;
+            --spacing-xxs: calc(var(--spacing-unit) * 0.25);
+            --spacing-xs: calc(var(--spacing-unit) * 0.5);
+            --spacing-sm: calc(var(--spacing-unit) * 0.75);
+            --spacing-md: var(--spacing-unit);
+            --spacing-lg: calc(var(--spacing-unit) * 1.5);
+            --spacing-xl: calc(var(--spacing-unit) * 2);
+            --spacing-xxl: calc(var(--spacing-unit) * 3);
+            --spacing-xxxl: calc(var(--spacing-unit) * 5);
+            
+            /* Effects */
+            --transition-fast: 0.2s;
+            --transition-normal: 0.3s;
+            --transition-slow: 0.5s;
+            --transition-very-slow: 0.8s;
+            --easing-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+            --easing-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1);
+            --easing-accelerate: cubic-bezier(0.4, 0.0, 1, 1);
+            --easing-custom: cubic-bezier(0.16, 1, 0.3, 1);
+            
+            /* Shadows & Effects */
+            --shadow-sm: 0 1px 2px rgba(10, 10, 10, 0.08);
+            --shadow-md: 0 4px 6px rgba(10, 10, 10, 0.08);
+            --shadow-lg: 0 10px 20px rgba(10, 10, 10, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(10, 10, 10, 0.1);
+            --blur-overlay: blur(10px);
+            
+            /* Z-index Layers */
+            --z-negative: -1;
+            --z-elevate: 2;
+            --z-drawer: 40;
+            --z-header: 50;
+            --z-modal: 60;
+            --z-toast: 70;
+        }
+
+        /*------------------------------------*\
+          # GLOBAL RESET & BASE STYLES
+        \*------------------------------------*/
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--color-gray) var(--color-off-white);
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-weight: var(--font-weight-light);
+            line-height: 1.6;
+            color: var(--color-off-black);
+            background-color: var(--color-white);
+            overflow-x: hidden;
+            letter-spacing: var(--letter-spacing-normal);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Custom scrollbar for Webkit */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-off-white);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-light-gray);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-gray);
+        }
+
+        main {
+            padding-top: var(--header-height);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color var(--transition-normal) var(--easing-standard);
+            position: relative;
+        }
+
+        img, video {
+            max-width: 100%;
+            display: block;
+            height: auto;
+            object-fit: cover;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-weight: var(--font-weight-light);
+            line-height: 1.2;
+            letter-spacing: var(--letter-spacing-tight);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        button, .btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all var(--transition-normal) var(--easing-standard);
+        }
+
+        .container {
+            width: 92%;
+            max-width: var(--max-width-container);
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* Utility classes */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity var(--transition-very-slow) var(--easing-custom), 
+                        transform var(--transition-very-slow) var(--easing-custom);
+        }
+        .fade-up.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity var(--transition-very-slow) var(--easing-decelerate);
+        }
+        .fade-in.animate {
+            opacity: 1;
+        }
+
+        .delay-1 {
+            transition-delay: 0.1s;
+        }
+        .delay-2 {
+            transition-delay: 0.2s;
+        }
+        .delay-3 {
+            transition-delay: 0.3s;
+        }
+        .delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        /*------------------------------------*\
+          # MARQUEE TEXT EFFECT
+        \*------------------------------------*/
+        .marquee-container {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--color-black);
+            color: var(--color-white);
+            padding: var(--spacing-sm) 0;
+            z-index: var(--z-elevate);
+        }
+
+        .marquee-content {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+
+        .marquee-item {
+            padding: 0 var(--spacing-lg);
+            font-size: 0.8rem;
+            letter-spacing: var(--letter-spacing-wider);
+            text-transform: uppercase;
+            font-weight: var(--font-weight-medium);
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /*------------------------------------*\
+          # HEADER & NAVIGATION
+        \*------------------------------------*/
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: var(--z-header);
+            transition: transform var(--transition-normal) var(--easing-custom),
+                        background-color var(--transition-normal) var(--easing-decelerate),
+                        box-shadow var(--transition-normal) var(--easing-decelerate),
+                        height var(--transition-normal) var(--easing-decelerate);
+            height: var(--header-height);
+        }
+
+        /* Hide header on scroll down, show on scroll up */
+        header.scroll-down {
+            transform: translateY(-100%);
+        }
+
+        header.scroll-up {
+            transform: translateY(0);
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: var(--blur-overlay);
+            -webkit-backdrop-filter: var(--blur-overlay);
+            box-shadow: var(--shadow-md);
+            height: 70px;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            font-family: var(--font-secondary);
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-light);
+            letter-spacing: var(--letter-spacing-wider);
+            position: relative;
+            color: var(--color-off-black);
+            text-transform: uppercase;
+            transition: color var(--transition-normal) var(--easing-decelerate);
+        }
+
+        header:not(.scrolled) .logo {
+            color: var(--color-white);
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform var(--transition-slow) var(--easing-custom);
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: var(--spacing-xl);
+        }
+
+        .nav-link {
+            position: relative;
+            font-size: 0.85rem;
+            font-weight: var(--font-weight-regular);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-wide);
+            padding-bottom: 4px;
+            color: var(--color-off-black);
+            transition: color var(--transition-normal) var(--easing-decelerate);
+        }
+
+        header:not(.scrolled) .nav-link {
+            color: var(--color-white);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: currentColor;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform var(--transition-normal) var(--easing-custom);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Cart icon and indicator */
+        .cart-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-left: var(--spacing-md);
+            color: var(--color-off-black);
+            transition: color var(--transition-normal) var(--easing-decelerate);
+        }
+
+        header:not(.scrolled) .cart-icon {
+            color: var(--color-white);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            border-radius: 50%;
+            font-weight: var(--font-weight-medium);
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: var(--z-drawer);
+        }
+
+        .menu-toggle span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--color-off-black);
+            transition: all var(--transition-normal) var(--easing-custom);
+        }
+
+        header:not(.scrolled) .menu-toggle span {
+            background-color: var(--color-white);
+        }
+
+        /*------------------------------------*\
+          # HERO SECTION
+        \*------------------------------------*/
+        .hero {
+            height: 100vh;
+            position: relative;
+            margin-top: calc(-1 * var(--header-height));
+            overflow: hidden;
+            background-color: var(--color-black);
+        }
+
+        .hero-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: absolute;
+            z-index: 2;
+            bottom: 15%;
+            left: 8%;
+            max-width: 600px;
+            color: var(--color-white);
+        }
+
+        .hero-tagline {
+            font-family: var(--font-secondary);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            font-weight: var(--font-weight-light);
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: var(--font-weight-light);
+            line-height: 1.1;
+            margin-bottom: var(--spacing-lg);
+            letter-spacing: var(--letter-spacing-tight);
+            text-transform: uppercase;
+        }
+
+        .hero-description {
+            font-size: clamp(1rem, 1.5vw, 1.2rem);
+            font-weight: var(--font-weight-light);
+            max-width: 500px;
+            margin-bottom: var(--spacing-xl);
+            line-height: 1.6;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: var(--spacing-md) var(--spacing-xl);
+            background-color: var(--color-white);
+            color: var(--color-black);
+            font-size: 0.85rem;
+            font-weight: var(--font-weight-medium);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-wide);
+            transition: all var(--transition-normal) var(--easing-custom);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-accent);
+            transform: translateX(-100%);
+            transition: transform var(--transition-normal) var(--easing-custom);
+            z-index: -1;
+        }
+
+        .btn-primary:hover {
+            color: var(--color-white);
+        }
+
+        .btn-primary:hover::before {
+            transform: translateX(0);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: var(--spacing-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: var(--color-white);
+            background: none;
+            border: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 0.7rem;
+            letter-spacing: var(--letter-spacing-wider);
+            text-transform: uppercase;
+            opacity: 0.8;
+            transition: opacity var(--transition-normal) var(--easing-decelerate);
+            cursor: pointer;
+        }
+
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+
+        .scroll-indicator svg {
+            width: 20px;
+            height: 30px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1;
+            animation: scrollPulse 2s infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(10px);
+                opacity: 1;
+            }
+        }
+
+        /*------------------------------------*\
+          # CAMPAIGN SECTION
+        \*------------------------------------*/
+        .campaign-section {
+            padding: var(--spacing-xxxl) 0;
+            background-color: var(--color-off-white);
+            position: relative;
+        }
+
+        .campaign-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+            font-weight: var(--font-weight-light);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+        }
+
+        .campaign-subtitle {
+            font-family: var(--font-secondary);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+            font-weight: var(--font-weight-light);
+            letter-spacing: var(--letter-spacing-normal);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--color-gray);
+        }
+
+        .campaign-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xxl);
+        }
+
+        .campaign-image-container {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/5;
+        }
+
+        .campaign-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow) var(--easing-custom);
+        }
+
+        .campaign-image-container:hover .campaign-image {
+            transform: scale(1.05);
+        }
+
+        .campaign-image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: var(--spacing-xl);
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+            color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 1;
+            transform: translateY(0);
+            transition: transform var(--transition-normal) var(--easing-custom);
+        }
+
+        .campaign-image-container:hover .campaign-image-overlay {
+            transform: translateY(-10px);
+        }
+
+        .campaign-image-title {
+            font-size: 1.5rem;
+            font-weight: var(--font-weight-light);
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: var(--letter-spacing-wide);
+        }
+
+        .campaign-image-text {
+            font-size: 0.9rem;
+            font-weight: var(--font-weight-light);
+            opacity: 0.9;
+        }
+
+        .campaign-cta {
+            display: flex;
+            justify-content: center;
+        }
+
+        /*------------------------------------*\
+          # COLLECTIONS GRID
+        \*------------------------------------*/
+        .collections-section {
+            padding: var(--spacing-xxxl) 0;
+            background-color: var(--color-white);
+        }
+
+        .collections-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            text-align: center;
+            margin-bottom: var(--spacing-xs);
+            font-weight: var(--font-weight-light);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+        }
+
+        .collections-subtitle {
+            font-family: var(--font-secondary);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+            font-weight: var(--font-weight-light);
+            letter-spacing: var(--letter-spacing-normal);
+            color: var(--color-gray);
+        }
+
+        .collections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--spacing-md);
+        }
+
+        .collection-item {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            box-shadow: var(--shadow-md);
+            transition: transform var(--transition-normal) var(--easing-standard),
+                        box-shadow var(--transition-normal) var(--easing-standard);
+        }
+
+        .collection-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .collection-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .collection-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow) var(--easing-custom);
+        }
+
+        .collection-item:hover .collection-image {
+            transform: scale(1.05);
+        }
+
+        .collection-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: var(--spacing-lg);
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            color: var(--color-white);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            z-index: 1;
+            transition: transform var(--transition-normal) var(--easing-custom);
+        }
+
+        .collection-item:hover .collection-overlay {
+            transform: translateY(-5px);
+        }
+
+        .collection-title {
+            font-size: 1.1rem;
+            font-weight: var(--font-weight-medium);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+        }
+
+        /*------------------------------------*\
+          # LOOKBOOK SECTION
+        \*------------------------------------*/
+        .lookbook-section {
+            padding: var(--spacing-xxxl) 0;
+            background-color: var(--color-white);
+            overflow: hidden;
+        }
+
+        .lookbook-container {
+            position: relative;
+        }
+
+        .lookbook-item {
+            position: relative;
+            margin-bottom: var(--spacing-xxl);
+            height: 90vh;
+            display: flex;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity var(--transition-very-slow) var(--easing-custom),
+                        transform var(--transition-very-slow) var(--easing-custom);
+        }
+
+        .lookbook-item.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .lookbook-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .lookbook-media {
+            flex: 1;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lookbook-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow) var(--easing-custom);
+        }
+
+        .lookbook-item:hover .lookbook-image {
+            transform: scale(1.03);
+        }
+
+        .lookbook-content {
+            position: absolute;
+            bottom: var(--spacing-xl);
+            left: var(--spacing-xl);
+            max-width: 400px;
+            color: var(--color-white);
+            z-index: 1;
+            transition: transform var(--transition-normal) var(--easing-custom);
+        }
+
+        .lookbook-item:hover .lookbook-content {
+            transform: translateY(-10px);
+        }
+
+        .lookbook-item:nth-child(even) .lookbook-content {
+            left: auto;
+            right: var(--spacing-xl);
+            text-align: right;
+        }
+
+        .lookbook-title {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: var(--font-weight-light);
+            margin-bottom: var(--spacing-sm);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+        }
+
+        .lookbook-description {
+            font-size: 1rem;
+            font-weight: var(--font-weight-light);
+            margin-bottom: var(--spacing-lg);
+            max-width: 350px;
+            line-height: 1.6;
+        }
+
+        .lookbook-item:nth-child(even) .lookbook-description {
+            margin-left: auto;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border: 1px solid var(--color-white);
+            color: var(--color-white);
+            font-size: 0.85rem;
+            font-weight: var(--font-weight-medium);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-wide);
+            transition: all var(--transition-normal) var(--easing-custom);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .btn-outline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-white);
+            transform: translateX(-100%);
+            transition: transform var(--transition-normal) var(--easing-custom);
+            z-index: -1;
+        }
+
+        .btn-outline:hover {
+            color: var(--color-black);
+        }
+
+        .btn-outline:hover::before {
+            transform: translateX(0);
+        }
+
+        /* Overlay for text readability */
+        .lookbook-media::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.5), rgba(0,0,0,0.1));
+            z-index: 0;
+            transition: opacity var(--transition-normal) var(--easing-decelerate);
+        }
+
+        .lookbook-item:hover .lookbook-media::after {
+            opacity: 0.9;
+        }
+
+        /* Image reveal animation */
+        .reveal-block {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-black);
+            transform-origin: left;
+            z-index: 2;
+        }
+
+        .lookbook-item.animate .reveal-block {
+            animation: revealImg 1.2s var(--easing-custom) forwards;
+        }
+
+        @keyframes revealImg {
+            0% {
+                transform: scaleX(1);
+            }
+            100% {
+                transform: scaleX(0);
+            }
+        }
+
+        /*------------------------------------*\
+          # TESTIMONIALS SECTION
+        \*------------------------------------*/
+        .testimonials-section {
+            background-color: var(--color-off-black);
+            color: var(--color-white);
+            padding: var(--spacing-xxxl) 0;
+            text-align: center;
+        }
+
+        .testimonials-title {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: var(--font-weight-light);
+            margin-bottom: var(--spacing-xxl);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+        }
+
+        .testimonials-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-item {
+            padding: 0 var(--spacing-xl);
+        }
+
+        .testimonial-quote {
+            font-family: var(--font-secondary);
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            font-style: italic;
+            line-height: 1.4;
+            margin-bottom: var(--spacing-xl);
+            font-weight: var(--font-weight-light);
+            letter-spacing: var(--letter-spacing-tight);
+        }
+
+        .testimonial-author {
+            font-size: 0.9rem;
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+            font-weight: var(--font-weight-medium);
+            opacity: 0.8;
+        }
+
+        /*------------------------------------*\
+          # INSTAGRAM FEED
+        \*------------------------------------*/
+        .instagram-section {
+            padding: var(--spacing-xxxl) 0;
+        }
+
+        .instagram-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            text-align: center;
+            margin-bottom: var(--spacing-xs);
+            font-weight: var(--font-weight-light);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+        }
+
+        .instagram-subtitle {
+            font-family: var(--font-secondary);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            text-align: center;
+            margin-bottom: var(--spacing-xxl);
+            font-weight: var(--font-weight-light);
+            letter-spacing: var(--letter-spacing-normal);
+            color: var(--color-gray);
+        }
+
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: var(--spacing-md);
+        }
+
+        .instagram-item {
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .instagram-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-normal) var(--easing-standard);
+        }
+
+        .instagram-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity var(--transition-normal) var(--easing-decelerate);
+        }
+
+        .instagram-item:hover .instagram-overlay {
+            opacity: 1;
+        }
+
+        .instagram-item:hover .instagram-image {
+            transform: scale(1.1);
+        }
+
+        .instagram-icon {
+            color: var(--color-white);
+            font-size: 1.5rem;
+        }
+
+        /*------------------------------------*\
+          # NEWSLETTER SECTION
+        \*------------------------------------*/
+        .newsletter-section {
+            padding: var(--spacing-xxl) 0;
+            background-color: var(--color-off-white);
+            text-align: center;
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            margin-bottom: var(--spacing-sm);
+            font-weight: var(--font-weight-light);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+        }
+
+        .newsletter-subtitle {
+            font-family: var(--font-secondary);
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            margin-bottom: var(--spacing-xl);
+            font-weight: var(--font-weight-light);
+            letter-spacing: var(--letter-spacing-normal);
+            color: var(--color-gray);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: var(--spacing-lg);
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border: none;
+            background-color: var(--color-white);
+            font-family: var(--font-primary);
+            font-size: 0.9rem;
+            letter-spacing: var(--letter-spacing-normal);
+        }
+
+        .newsletter-button {
+            padding: var(--spacing-md) var(--spacing-xl);
+            background-color: var(--color-black);
+            color: var(--color-white);
+            font-size: 0.85rem;
+            font-weight: var(--font-weight-medium);
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing-wide);
+            cursor: pointer;
+            transition: background-color var(--transition-normal) var(--easing-standard);
+        }
+
+        .newsletter-button:hover {
+            background-color: var(--color-accent);
+        }
+
+        /*------------------------------------*\
+          # FOOTER
+        \*------------------------------------*/
+        .footer {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            padding-top: var(--spacing-xxl);
+        }
+
+        .footer-main {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-xl);
+            padding-bottom: var(--spacing-xxl);
+        }
+
+        .footer-brand {
+            grid-column: span 2;
+        }
+
+        .footer-logo {
+            font-family: var(--font-secondary);
+            font-size: 1.8rem;
+            font-weight: var(--font-weight-light);
+            letter-spacing: var(--letter-spacing-wider);
+            margin-bottom: var(--spacing-md);
+            display: inline-block;
+        }
+
+        .footer-description {
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-lg);
+            max-width: 400px;
+            opacity: 0.8;
+        }
+
+        .footer-heading {
+            font-size: 1rem;
+            font-weight: var(--font-weight-medium);
+            letter-spacing: var(--letter-spacing-wide);
+            text-transform: uppercase;
+            margin-bottom: var(--spacing-lg);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 1px;
+            background-color: var(--color-accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .footer-link {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            transition: opacity var(--transition-normal) var(--easing-standard);
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transition: all var(--transition-normal) var(--easing-standard);
+        }
+
+        .social-link:hover {
+            background-color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+
+        .footer-bottom {
+            padding: var(--spacing-lg) 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+            opacity: 0.7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-md);
+        }
+
+        /*------------------------------------*\
+          # ANIMATIONS & EFFECTS
+        \*------------------------------------*/
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, var(--color-accent), #FFFFFF);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .parallax {
+            transition: transform var(--transition-very-slow) var(--easing-custom);
+        }
+
+        /*------------------------------------*\
+          # RESPONSIVE STYLES
+        \*------------------------------------*/
+        @media (max-width: 1200px) {
+            .instagram-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            :root {
+                --header-height: 70px;
+            }
+
+            .campaign-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            html {
+                font-size: 15px;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 400px;
+                height: 100vh;
+                background-color: var(--color-black);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: var(--spacing-xl);
+                padding: var(--spacing-xxl);
+                transition: right var(--transition-normal) var(--easing-custom);
+                z-index: var(--z-drawer);
+            }
+
+            .nav-menu.active {
+                right: 0;
+            }
+
+            .nav-menu .nav-link {
+                color: var(--color-white);
+                font-size: 1.2rem;
+            }
+
+            .hero-content {
+                left: 5%;
+                bottom: 20%;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+            }
+
+            .newsletter-input,
+            .newsletter-button {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 14px;
+            }
+
+            .hero-content {
+                left: var(--spacing-md);
+                bottom: 15%;
+                max-width: 90%;
+            }
+
+            .container {
+                width: 90%;
+            }
+
+            .lookbook-title {
+                font-size: 1.5rem;
+            }
+
+            .lookbook-content {
+                left: var(--spacing-md);
+                bottom: var(--spacing-md);
+            }
+
+            .lookbook-item:nth-child(even) .lookbook-content {
+                right: var(--spacing-md);
+            }
+
+            .instagram-grid {
+                gap: 5px;
+            }
+
+            .footer-main {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Marquee Announcement Bar -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item">Free shipping on all orders over $150</span>
+            <span class="marquee-item">New Summer Collection Available Now</span>
+            <span class="marquee-item">Sign up for 10% off your first order</span>
+            <span class="marquee-item">Limited Edition Pieces - Shop Now</span>
+            <span class="marquee-item">Free shipping on all orders over $150</span>
+            <span class="marquee-item">New Summer Collection Available Now</span>
+            <span class="marquee-item">Sign up for 10% off your first order</span>
+            <span class="marquee-item">Limited Edition Pieces - Shop Now</span>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">Aesthetique</a>
+            
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="nav-menu" aria-label="Main Navigation">
+                <a href="#" class="nav-link active">Home</a>
+                <a href="#collections" class="nav-link">Collections</a>
+                <a href="#lookbook" class="nav-link">Lookbook</a>
+                <a href="#shop" class="nav-link">Shop</a>
+                <a href="#contact" class="nav-link">Contact</a>
+                
+                <a href="#cart" class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">2</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-media">
+                <video class="hero-video" autoplay muted loop playsinline>
+                    <source src="/api/placeholder/1600/900" type="video/mp4">
+                    <!-- Fallback for browsers that don't support video -->
+                    <img src="/api/placeholder/1600/900" alt="Fashion model in urban setting" class="hero-image">
+                </video>
+            </div>
+            <div class="hero-overlay"></div>
+            
+            <div class="hero-content">
+                <span class="hero-tagline fade-up">Spring/Summer '25</span>
+                <h1 class="hero-title fade-up delay-1">Redefine <span class="text-gradient">Your Essence</span></h1>
+                <p class="hero-description fade-up delay-2">Discover the latest collection of premium streetwear designed for those who dare to stand out. Minimalist aesthetics meets bold expression.</p>
+                <a href="#collections" class="btn-primary fade-up delay-3">Explore Collection</a>
+            </div>
+            
+            <button class="scroll-indicator" aria-label="Scroll Down">
+                <span>Scroll</span>
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 5v14M19 12l-7 7-7-7"></path>
+                </svg>
+            </button>
+        </section>
+
+        <!-- Campaign Section -->
+        <section class="campaign-section" id="collections">
+            <div class="container">
+                <h2 class="campaign-title fade-up">The New Season</h2>
+                <p class="campaign-subtitle fade-up delay-1">Our latest campaign showcases the perfect blend of urban aesthetics and high-end fashion sensibility.</p>
+                
+                <div class="campaign-grid">
+                    <div class="campaign-image-container fade-up delay-2">
+                        <img src="/api/placeholder/800/1000" alt="Model in oversized blazer" class="campaign-image">
+                        <div class="campaign-image-overlay">
+                            <h3 class="campaign-image-title">Urban Essentials</h3>
+                            <p class="campaign-image-text">Versatile pieces designed for the modern lifestyle.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="campaign-image-container fade-up delay-3">
+                        <img src="/api/placeholder/800/1000" alt="Model in streetwear outfit" class="campaign-image">
+                        <div class="campaign-image-overlay">
+                            <h3 class="campaign-image-title">Street Couture</h3>
+                            <p class="campaign-image-text">Where street style meets high fashion.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campaign-cta fade-up delay-4">
+                    <a href="#shop" class="btn-primary">Shop The Campaign</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collections Grid -->
+        <section class="collections-section" id="shop">
+            <div class="container">
+                <h2 class="collections-title fade-up">Shop Categories</h2>
+                <p class="collections-subtitle fade-up delay-1">Curated selections to define your personal style</p>
+                
+                <div class="collections-grid">
+                    <article class="collection-item fade-up">
+                        <a href="#tees" class="collection-link">
+                            <img src="/api/placeholder/600/800" alt="Oversized tees collection" class="collection-image">
+                            <div class="collection-overlay">
+                                <h3 class="collection-title">Oversized Tees</h3>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <article class="collection-item fade-up delay-1">
+                        <a href="#outerwear" class="collection-link">
+                            <img src="/api/placeholder/600/800" alt="Technical outerwear collection" class="collection-image">
+                            <div class="collection-overlay">
+                                <h3 class="collection-title">Technical Outerwear</h3>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <article class="collection-item fade-up delay-2">
+                        <a href="#bottoms" class="collection-link">
+                            <img src="/api/placeholder/600/800" alt="Premium bottoms collection" class="collection-image">
+                            <div class="collection-overlay">
+                                <h3 class="collection-title">Premium Bottoms</h3>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <article class="collection-item fade-up delay-3">
+                        <a href="#accessories" class="collection-link">
+                            <img src="/api/placeholder/600/800" alt="Accessories collection" class="collection-image">
+                            <div class="collection-overlay">
+                                <h3 class="collection-title">Accessories</h3>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lookbook Section -->
+        <section class="lookbook-section" id="lookbook">
+            <div class="container lookbook-container">
+                <div class="lookbook-item">
+                    <div class="lookbook-media">
+                        <img src="/api/placeholder/1600/1000" alt="Model in urban setting" class="lookbook-image">
+                        <div class="reveal-block"></div>
+                    </div>
+                    <div class="lookbook-content fade-up delay-1">
+                        <h3 class="lookbook-title">Metropolitan Edge</h3>
+                        <p class="lookbook-description">Structured silhouettes reimagined for the urban landscape. Bold lines meet functional design.</p>
+                        <a href="#shop" class="btn-outline">Explore Series</a>
+                    </div>
+                </div>
+                
+                <div class="lookbook-item">
+                    <div class="lookbook-media">
+                        <img src="/api/placeholder/1600/1000" alt="Conceptual fashion shot" class="lookbook-image">
+                        <div class="reveal-block"></div>
+                    </div>
+                    <div class="lookbook-content fade-up delay-1">
+                        <h3 class="lookbook-title">Avant-Garde Minimalism</h3>
+                        <p class="lookbook-description">Pushing boundaries through subtle innovation. A fresh perspective on classic minimalism.</p>
+                        <a href="#shop" class="btn-outline">Explore Series</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="container">
+                <h2 class="testimonials-title fade-in">What People Say</h2>
+                
+                <div class="testimonials-container">
+                    <div class="testimonial-item fade-in delay-1">
+                        <p class="testimonial-quote">"The quality and attention to detail in every piece is exceptional. AESTHETIQUE has completely transformed my wardrobe with timeless, yet forward-thinking designs."</p>
+                        <div class="testimonial-author">James Chen, Fashion Editor</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instagram Feed -->
+        <section class="instagram-section">
+            <div class="container">
+                <h2 class="instagram-title fade-up">Follow Our Journey</h2>
+                <p class="instagram-subtitle fade-up delay-1">@aesthetique_official</p>
+                
+                <div class="instagram-grid">
+                    <div class="instagram-item fade-in">
+                        <img src="/api/placeholder/400/400" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <span class="instagram-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="instagram-item fade-in delay-1">
+                        <img src="/api/placeholder/400/400" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <span class="instagram-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="instagram-item fade-in delay-2">
+                        <img src="/api/placeholder/400/400" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <span class="instagram-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="instagram-item fade-in delay-3">
+                        <img src="/api/placeholder/400/400" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <span class="instagram-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="instagram-item fade-in delay-4">
+                        <img src="/api/placeholder/400/400" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <span class="instagram-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="container newsletter-container">
+                <h2 class="newsletter-title fade-up">Stay Connected</h2>
+                <p class="newsletter-subtitle fade-up delay-1">Subscribe to our newsletter for exclusive updates and early access to new releases.</p>
+                
+                <form class="newsletter-form fade-up delay-2">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">Aesthetique</a>
+                    <p class="footer-description">Redefining contemporary streetwear with precision craftsmanship and innovative design. Each piece tells a story of urban sophistication.</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Pinterest">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 6v12M8 12h8"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="footer-heading">Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">New Arrivals</a></li>
+                        <li><a href="#" class="footer-link">Best Sellers</a></li>
+                        <li><a href="#" class="footer-link">Collections</a></li>
+                        <li><a href="#" class="footer-link">Accessories</a></li>
+                        <li><a href="#" class="footer-link">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="footer-heading">About</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Our Story</a></li>
+                        <li><a href="#" class="footer-link">Sustainability</a></li>
+                        <li><a href="#" class="footer-link">Craftsmanship</a></li>
+                        <li><a href="#" class="footer-link">Careers</a></li>
+                        <li><a href="#" class="footer-link">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="footer-heading">Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Contact Us</a></li>
+                        <li><a href="#" class="footer-link">Shipping & Returns</a></li>
+                        <li><a href="#" class="footer-link">FAQs</a></li>
+                        <li><a href="#" class="footer-link">Size Guide</a></li>
+                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © <span id="current-year">2025</span> AESTHETIQUE. All rights reserved.
+                </div>
+                <div class="payment-methods">
+                    Payment Methods: Visa, Mastercard, American Express, PayPal
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Header scroll effects
+            const header = document.getElementById('header');
+            let lastScrollTop = 0;
+            
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Add scrolled class when scrolling starts
+                if (scrollTop > 10) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // Hide header on scroll down, show on scroll up
+                if (scrollTop > lastScrollTop && scrollTop > 200) {
+                    header.classList.add('scroll-down');
+                    header.classList.remove('scroll-up');
+                } else {
+                    header.classList.remove('scroll-down');
+                    header.classList.add('scroll-up');
+                }
+                
+                lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+            });
+            
+            // Mobile menu toggle
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                document.body.classList.toggle('no-scroll');
+                
+                // Transform hamburger into X
+                menuToggle.classList.toggle('active');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !menuToggle.contains(e.target) && navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                    menuToggle.classList.remove('active');
+                }
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId === '#') return;
+                    
+                    e.preventDefault();
+                    
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // Close mobile menu if open
+                        if (navMenu.classList.contains('active')) {
+                            navMenu.classList.remove('active');
+                            document.body.classList.remove('no-scroll');
+                            menuToggle.classList.remove('active');
+                        }
+                        
+                        const headerHeight = header.offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+                        const offsetPosition = targetPosition - headerHeight - 20;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Scroll down button functionality
+            const scrollIndicator = document.querySelector('.scroll-indicator');
+            
+            if (scrollIndicator) {
+                scrollIndicator.addEventListener('click', () => {
+                    const firstSection = document.querySelector('.campaign-section');
+                    const headerHeight = header.offsetHeight;
+                    
+                    if (firstSection) {
+                        window.scrollTo({
+                            top: firstSection.offsetTop - headerHeight,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            }
+            
+            // Animation on scroll using Intersection Observer
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all elements with animation classes
+            document.querySelectorAll('.fade-up, .fade-in, .lookbook-item').forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Simple parallax effect
+            const parallaxElements = document.querySelectorAll('.parallax');
+            
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset;
+                
+                parallaxElements.forEach(element => {
+                    const speed = element.dataset.speed || 0.1;
+                    element.style.transform = `translateY(${scrollTop * speed}px)`;
+                });
+            });
+        });
+    </script>
+</body>
+</html>                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lionel Bamford - Premium Streetwear</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Marquee Announcement Bar -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item">Free shipping on all orders over $150</span>
+            <span class="marquee-item">New Summer Collection Available Now</span>
+            <span class="marquee-item">Sign up for 10% off your first order</span>
+            <span class="marquee-item">Limited Edition Pieces - Shop Now</span>
+            <span class="marquee-item">Free shipping on all orders over $150</span>
+            <span class="marquee-item">New Summer Collection Available Now</span>
+            <span class="marquee-item">Sign up for 10% off your first order</span>
+            <span class="marquee-item">Limited Edition Pieces - Shop Now</span>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container header-container">
+            <a href="/" class="logo">Lionel Bamford</a>
+            
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <nav class="nav-menu" aria-label="Main Navigation">
+                <a href="/" class="nav-link active">Home</a>
+                <a href="/pages/shop.html" class="nav-link">Shop</a>
+                <a href="/pages/collections.html" class="nav-link">Collections</a>
+                <a href="/pages/blog.html" class="nav-link">Blog</a>
+                <a href="/pages/about.html" class="nav-link">About</a>
+                
+                <a href="#cart" class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span class="cart-count">0</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-media">
+                <video class="hero-video" autoplay muted loop playsinline>
+                    <source src="assets/videos/hero.mp4" type="video/mp4">
+                    <!-- Fallback for browsers that don't support video -->
+                    <img src="assets/images/hero.jpg" alt="Fashion model in urban setting" class="hero-image">
+                </video>
+            </div>
+            <div class="hero-overlay"></div>
+            
+            <div class="hero-content">
+                <span class="hero-tagline fade-up">Spring/Summer '24</span>
+                <h1 class="hero-title fade-up delay-1">Redefine <span class="text-gradient">Your Style</span></h1>
+                <p class="hero-description fade-up delay-2">Discover the latest collection of premium streetwear designed for those who dare to stand out. Minimalist aesthetics meets bold expression.</p>
+                <a href="/pages/shop.html" class="btn-primary fade-up delay-3">Explore Collection</a>
+            </div>
+            
+            <button class="scroll-indicator" aria-label="Scroll Down">
+                <span>Scroll</span>
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 5v14M19 12l-7 7-7-7"></path>
+                </svg>
+            </button>
+        </section>
+
+        <!-- Campaign Section -->
+        <section class="campaign-section" id="collections">
+            <div class="container">
+                <h2 class="campaign-title fade-up">The New Season</h2>
+                <p class="campaign-subtitle fade-up delay-1">Our latest campaign showcases the perfect blend of urban aesthetics and high-end fashion sensibility.</p>
+                
+                <div class="campaign-grid">
+                    <div class="campaign-image-container fade-up delay-2">
+                        <img src="assets/images/campaign-1.jpg" alt="Model in oversized blazer" class="campaign-image">
+                        <div class="campaign-image-overlay">
+                            <h3 class="campaign-image-title">Urban Essentials</h3>
+                            <p class="campaign-image-text">Versatile pieces designed for the modern lifestyle.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="campaign-image-container fade-up delay-3">
+                        <img src="assets/images/campaign-2.jpg" alt="Model in streetwear outfit" class="campaign-image">
+                        <div class="campaign-image-overlay">
+                            <h3 class="campaign-image-title">Street Couture</h3>
+                            <p class="campaign-image-text">Where street style meets high fashion.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campaign-cta fade-up delay-4">
+                    <a href="/pages/shop.html" class="btn-primary">Shop The Campaign</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Collections Grid -->
+        <section class="collections-section" id="shop">
+            <div class="container">
+                <h2 class="collections-title fade-up">Shop Categories</h2>
+                <p class="collections-subtitle fade-up delay-1">Curated selections to define your personal style</p>
+                
+                <div class="collections-grid">
+                    <article class="collection-item fade-up">
+                        <a href="/pages/shop.html#tees" class="collection-link">
+                            <img src="assets/images/collection-tees.jpg" alt="Oversized tees collection" class="collection-image">
+                            <div class="collection-overlay">
+                                <h3 class="collection-title">Oversized Tees</h3>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <article class="collection-item fade-up delay-1">
+                        <a href="/pages/shop.html#outerwear" class="collection-link">
+                            <img src="assets/images/collection-outerwear.jpg" alt="Technical outerwear collection" class="collection-image">
+                            <div class="collection-overlay">
+                                <h3 class="collection-title">Technical Outerwear</h3>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <article class="collection-item fade-up delay-2">
+                        <a href="/pages/shop.html#bottoms" class="collection-link">
+                            <img src="assets/images/collection-bottoms.jpg" alt="Premium bottoms collection" class="collection-image">
+                            <div class="collection-overlay">
+                                <h3 class="collection-title">Premium Bottoms</h3>
+                            </div>
+                        </a>
+                    </article>
+                    
+                    <article class="collection-item fade-up delay-3">
+                        <a href="/pages/shop.html#accessories" class="collection-link">
+                            <img src="assets/images/collection-accessories.jpg" alt="Accessories collection" class="collection-image">
+                            <div class="collection-overlay">
+                                <h3 class="collection-title">Accessories</h3>
+                            </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lookbook Section -->
+        <section class="lookbook-section" id="lookbook">
+            <div class="container lookbook-container">
+                <div class="lookbook-item">
+                    <div class="lookbook-media">
+                        <img src="assets/images/lookbook-1.jpg" alt="Model in urban setting" class="lookbook-image">
+                        <div class="reveal-block"></div>
+                    </div>
+                    <div class="lookbook-content fade-up delay-1">
+                        <h3 class="lookbook-title">Metropolitan Edge</h3>
+                        <p class="lookbook-description">Structured silhouettes reimagined for the urban landscape. Bold lines meet functional design.</p>
+                        <a href="/pages/shop.html" class="btn-outline">Explore Series</a>
+                    </div>
+                </div>
+                
+                <div class="lookbook-item">
+                    <div class="lookbook-media">
+                        <img src="assets/images/lookbook-2.jpg" alt="Conceptual fashion shot" class="lookbook-image">
+                        <div class="reveal-block"></div>
+                    </div>
+                    <div class="lookbook-content fade-up delay-1">
+                        <h3 class="lookbook-title">Avant-Garde Minimalism</h3>
+                        <p class="lookbook-description">Pushing boundaries through subtle innovation. A fresh perspective on classic minimalism.</p>
+                        <a href="/pages/shop.html" class="btn-outline">Explore Series</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section">
+            <div class="container">
+                <h2 class="testimonials-title fade-in">What People Say</h2>
+                
+                <div class="testimonials-container">
+                    <div class="testimonial-item fade-in delay-1">
+                        <p class="testimonial-quote">"The quality and attention to detail in every piece is exceptional. Lionel Bamford has completely transformed my wardrobe with timeless, yet forward-thinking designs."</p>
+                        <div class="testimonial-author">James Chen, Fashion Editor</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instagram Feed -->
+        <section class="instagram-section">
+            <div class="container">
+                <h2 class="instagram-title fade-up">Follow Our Journey</h2>
+                <p class="instagram-subtitle fade-up delay-1">@lionelbamford</p>
+                
+                <div class="instagram-grid">
+                    <div class="instagram-item fade-in">
+                        <img src="assets/images/instagram-1.jpg" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <span class="instagram-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="instagram-item fade-in delay-1">
+                        <img src="assets/images/instagram-2.jpg" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <span class="instagram-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="instagram-item fade-in delay-2">
+                        <img src="assets/images/instagram-3.jpg" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <span class="instagram-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="instagram-item fade-in delay-3">
+                        <img src="assets/images/instagram-4.jpg" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <span class="instagram-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="instagram-item fade-in delay-4">
+                        <img src="assets/images/instagram-5.jpg" alt="Instagram post" class="instagram-image">
+                        <div class="instagram-overlay">
+                            <span class="instagram-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section">
+            <div class="container newsletter-container">
+                <h2 class="newsletter-title fade-up">Stay Connected</h2>
+                <p class="newsletter-subtitle fade-up delay-1">Subscribe to our newsletter for exclusive updates and early access to new releases.</p>
+                
+                <form class="newsletter-form fade-up delay-2">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-button">Subscribe</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="/" class="footer-logo">Lionel Bamford</a>
+                    <p class="footer-description">Redefining contemporary streetwear with precision craftsmanship and innovative design. Each piece tells a story of urban sophistication.</p>
+                    
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="footer-heading">Shop</h3>
+                    <ul class="footer-links">
+                        <li><a href="/pages/shop.html#new" class="footer-link">New Arrivals</a></li>
+                        <li><a href="/pages/shop.html#bestsellers" class="footer-link">Best Sellers</a></li>
+                        <li><a href="/pages/collections.html" class="footer-link">Collections</a></li>
+                        <li><a href="/pages/shop.html#accessories" class="footer-link">Accessories</a></li>
+                        <li><a href="/pages/shop.html#sale" class="footer-link">Sale</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="footer-heading">About</h3>
+                    <ul class="footer-links">
+                        <li><a href="/pages/about.html" class="footer-link">Our Story</a></li>
+                        <li><a href="/pages/about.html#sustainability" class="footer-link">Sustainability</a></li>
+                        <li><a href="/pages/about.html#craftsmanship" class="footer-link">Craftsmanship</a></li>
+                        <li><a href="/pages/about.html#careers" class="footer-link">Careers</a></li>
+                        <li><a href="/pages/about.html#press" class="footer-link">Press</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-nav">
+                    <h3 class="footer-heading">Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="/pages/contact.html" class="footer-link">Contact Us</a></li>
+                        <li><a href="/pages/shipping.html" class="footer-link">Shipping & Returns</a></li>
+                        <li><a href="/pages/faq.html" class="footer-link">FAQs</a></li>
+                        <li><a href="/pages/size-guide.html" class="footer-link">Size Guide</a></li>
+                        <li><a href="/pages/privacy.html" class="footer-link">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © <span id="current-year">2024</span> Lionel Bamford. All rights reserved.
+                </div>
+                <div class="payment-methods">
+                    Payment Methods: Visa, Mastercard, American Express, PayPal
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/newsletter.js"></script>
+</body>
+</html> 

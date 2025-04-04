@@ -2,6 +2,10 @@
 
 A modern, responsive e-commerce website for the Lionel Bamford fashion brand, built with vanilla HTML, CSS, and JavaScript.
 
+## Project Status: Design Mode
+
+This project is currently in **design_mode**, focusing exclusively on the front-end implementation. The goal is to create a polished, responsive, and user-friendly interface before integrating with backend services.
+
 ## Project Structure
 
 ```
@@ -31,10 +35,9 @@ lionelbamford.com/
 │       └── footer.css        # Footer styles
 ├── js/                       # JavaScript files
 │   ├── main.js               # Main JavaScript file
-│   └── components/           # Component-specific scripts
-│       ├── cart.js           # Shopping cart functionality
-│       ├── search.js         # Search functionality
-│       └── newsletter.js     # Newsletter signup functionality
+│   ├── cart.js               # Shopping cart functionality
+│   ├── search.js             # Search functionality
+│   └── newsletter.js         # Newsletter signup functionality
 └── pages/                    # Additional HTML pages
     ├── shop.html             # Shop page
     ├── collections.html      # Collections page
@@ -45,12 +48,28 @@ lionelbamford.com/
 
 ## Features
 
+### Implemented
 - Responsive design for all device sizes
 - Interactive product gallery
-- Shopping cart functionality
-- Newsletter signup
-- Product filtering and sorting (to be implemented)
-- User account management (to be implemented)
+- Shopping cart functionality with local storage
+- Newsletter signup with form validation
+- Search functionality with debounced input
+- Mobile-friendly navigation
+- Smooth scrolling and animations
+
+### In Progress
+- Product filtering and sorting
+- Enhanced UI/UX for product detail pages
+- Improved accessibility features
+- Performance optimization
+
+### Backend Integration (Future)
+- User authentication
+- Full shopping cart checkout
+- Product reviews and ratings
+- Enhanced search functionality with backend integration
+- Wishlist functionality
+- Size guide and product recommendations
 
 ## Getting Started
 
@@ -83,13 +102,58 @@ For local development, you can use any web server, such as:
 - Python's simple HTTP server: `python -m http.server`
 - Node.js's http-server: `npx http-server`
 
-## Future Enhancements
+## JavaScript Functionality
 
-- User authentication
-- Full shopping cart checkout
-- Product reviews and ratings
-- Enhanced search functionality
-- Product filtering and sorting
+The website includes several JavaScript modules:
+
+- **main.js**: Core functionality including animations, mobile menu, and scroll effects
+- **cart.js**: Shopping cart operations with local storage persistence
+- **newsletter.js**: Newsletter signup with validation and success/error messages
+- **search.js**: Search functionality with debounced input and results display
+
+## Design Mode Focus Areas
+
+During the design_mode phase, we are focusing on:
+
+1. **UI/UX Refinement**
+   - Improving visual consistency
+   - Enhancing user interactions
+   - Optimizing responsive layouts
+
+2. **Performance Optimization**
+   - Reducing page load times
+   - Optimizing images and assets
+   - Improving JavaScript efficiency
+
+3. **Accessibility Improvements**
+   - Ensuring WCAG compliance
+   - Enhancing keyboard navigation
+   - Improving screen reader compatibility
+
+4. **Cross-browser Compatibility**
+   - Testing on multiple browsers
+   - Fixing browser-specific issues
+   - Ensuring consistent experience
+
+## Project Roadmap
+
+### Phase 1: Design Mode (Current)
+- Complete all front-end pages
+- Refine UI/UX
+- Optimize performance
+- Improve accessibility
+
+### Phase 2: Backend Integration (Future)
+- Set up backend services
+- Implement user authentication
+- Create product database
+- Integrate payment processing
+
+### Phase 3: Launch Preparation (Future)
+- Final testing
+- SEO optimization
+- Analytics implementation
+- Launch preparation
 
 ## License
 

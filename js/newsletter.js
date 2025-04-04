@@ -1,9 +1,9 @@
-// Newsletter functionality
+// Newsletter functionality for design_mode
 document.addEventListener('DOMContentLoaded', () => {
     const newsletterForm = document.querySelector('.newsletter-form');
     
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', async (e) => {
+        newsletterForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             const emailInput = newsletterForm.querySelector('.newsletter-input');
@@ -19,22 +19,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
             
-            try {
-                // Here you would typically make an API call to your backend
-                // For now, we'll simulate a successful subscription
-                await subscribeToNewsletter(email);
+            // In design_mode, we'll simulate a successful subscription
+            // Show loading state
+            const submitButton = newsletterForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            submitButton.textContent = 'Sending...';
+            submitButton.disabled = true;
+            
+            // Simulate API call with a timeout
+            setTimeout(() => {
+                // Store email in localStorage for demo purposes
+                const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
+                subscribers.push({
+                    email,
+                    subscribedAt: new Date().toISOString()
+                });
+                localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
                 
+                // Show success message
                 showMessage('Thank you for subscribing!', 'success');
                 emailInput.value = '';
+                
+                // Reset button
+                submitButton.textContent = originalButtonText;
+                submitButton.disabled = false;
                 
                 // Disable the form after successful subscription
                 newsletterForm.reset();
                 newsletterForm.classList.add('subscribed');
-                
-            } catch (error) {
-                showMessage('Something went wrong. Please try again later.', 'error');
-                console.error('Newsletter subscription error:', error);
-            }
+            }, 1000);
         });
     }
     
@@ -63,22 +76,5 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             messageElement.remove();
         }, 3000);
-    }
-    
-    async function subscribeToNewsletter(email) {
-        // Simulate API call
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                // Store email in localStorage for demo purposes
-                const subscribers = JSON.parse(localStorage.getItem('newsletter_subscribers') || '[]');
-                subscribers.push({
-                    email,
-                    subscribedAt: new Date().toISOString()
-                });
-                localStorage.setItem('newsletter_subscribers', JSON.stringify(subscribers));
-                
-                resolve();
-            }, 1000);
-        });
     }
 }); 

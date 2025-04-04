@@ -1,4 +1,4 @@
-// Search functionality
+// Search functionality for design_mode
 document.addEventListener('DOMContentLoaded', () => {
     const searchButton = document.querySelector('.search-button');
     const searchOverlay = document.querySelector('.search-overlay');
@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchResults = document.querySelector('.search-results');
     const closeSearch = document.querySelector('.close-search');
     
-    // Sample product data - replace with your actual product data
+    // Mock product data for design_mode
     const products = [
         {
             id: 1,
@@ -15,7 +15,34 @@ document.addEventListener('DOMContentLoaded', () => {
             category: 'Shirts',
             image: 'assets/images/products/linen-blend-shirt.jpg'
         },
-        // Add more products here
+        {
+            id: 2,
+            name: 'Relaxed Chinos',
+            price: 75.00,
+            category: 'Pants',
+            image: 'assets/images/products/relaxed-chinos.jpg'
+        },
+        {
+            id: 3,
+            name: 'Summer Jacket',
+            price: 120.00,
+            category: 'Outerwear',
+            image: 'assets/images/products/summer-jacket.jpg'
+        },
+        {
+            id: 4,
+            name: 'Classic T-Shirt',
+            price: 35.00,
+            category: 'Shirts',
+            image: 'assets/images/products/classic-tshirt.jpg'
+        },
+        {
+            id: 5,
+            name: 'Slim Fit Jeans',
+            price: 85.00,
+            category: 'Pants',
+            image: 'assets/images/products/slim-fit-jeans.jpg'
+        }
     ];
     
     if (searchButton && searchOverlay) {
@@ -77,8 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         const resultsHTML = results.map(product => `
-            <a href="/product-detail.html?id=${product.id}" class="search-result-item">
-                <img src="${product.image}" alt="${product.name}">
+            <a href="/pages/product-detail.html?id=${product.id}" class="search-result-item">
+                <img src="${product.image}" alt="${product.name}" onerror="this.src='assets/images/placeholder.jpg'">
                 <div class="search-result-info">
                     <h3>${product.name}</h3>
                     <p class="price">$${product.price.toFixed(2)}</p>

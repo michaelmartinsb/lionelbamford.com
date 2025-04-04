@@ -1,4 +1,4 @@
-// Cart functionality
+// Cart functionality for design_mode
 class Cart {
     constructor() {
         this.items = JSON.parse(localStorage.getItem('cart')) || [];
@@ -105,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (cartIcon) {
         cartIcon.addEventListener('click', (e) => {
             e.preventDefault();
-            // Implement cart drawer or redirect to cart page
-            window.location.href = '/pages/cart.html';
+            // In design_mode, we'll just show a message instead of redirecting
+            alert('Cart functionality is simulated in design_mode. In a real implementation, this would navigate to the cart page.');
         });
     }
 }); 

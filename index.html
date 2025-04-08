@@ -31,7 +31,7 @@
     <!-- Header -->
     <header id="header" class="header">
       <div class="container header-container">
-        <a href="/" class="logo magnetic-text">Lionel Bamford</a>
+        <a href="/" class="logo">Lionel Bamford</a>
 
         <button class="menu-toggle tactile-button" aria-label="Toggle Menu">
           <span></span>
@@ -40,15 +40,91 @@
         </button>
 
         <nav class="nav-menu" aria-label="Main Navigation">
-          <a href="/" class="nav-link active hover-lift">Home</a>
-          <a href="/pages/shop.html" class="nav-link hover-lift">Shop</a>
-          <a href="/pages/collections.html" class="nav-link hover-lift"
-            >Collections</a
-          >
-          <a href="/pages/blog.html" class="nav-link hover-lift">Blog</a>
-          <a href="/pages/about.html" class="nav-link hover-lift">About</a>
+          <a href="/" class="nav-link active">Home</a>
 
-          <a href="#cart" class="cart-icon pulse-on-hover">
+          <div class="mega-menu-container">
+            <a href="/pages/collections.html" class="nav-link">Collections</a>
+            <div class="mega-menu">
+              <div class="mega-menu-content">
+                <div class="mega-menu-column">
+                  <ul class="mega-menu-list">
+                    <li><a href="/pages/collections.html">View all</a></li>
+                    <li>
+                      <a href="/pages/collections.html#spring"
+                        >SPRING/SUMMER '24</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/pages/collections.html#essentials"
+                        >ESSENTIALS</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/pages/collections.html#limited"
+                        >LIMITED EDITIONS</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/pages/collections.html#archive">ARCHIVE</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mega-menu-featured">
+                  <div class="featured-item">
+                    <img
+                      src="assets/images/campaign-1.jpg"
+                      alt="Spring/Summer Collection"
+                    />
+                    <span>SPRING/SUMMER '24</span>
+                  </div>
+                  <div class="featured-item">
+                    <img src="assets/images/campaign-2.jpg" alt="Essentials" />
+                    <span>ESSENTIALS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mega-menu-container">
+            <a href="/pages/shop.html" class="nav-link">Shop</a>
+            <div class="mega-menu">
+              <div class="mega-menu-content">
+                <div class="mega-menu-column">
+                  <ul class="mega-menu-list">
+                    <li><a href="/pages/shop.html">View all</a></li>
+                    <li><a href="/pages/shop.html#tees">TEES & TOPS</a></li>
+                    <li><a href="/pages/shop.html#outerwear">OUTERWEAR</a></li>
+                    <li><a href="/pages/shop.html#bottoms">BOTTOMS</a></li>
+                    <li>
+                      <a href="/pages/shop.html#accessories">ACCESSORIES</a>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mega-menu-featured">
+                  <div class="featured-item">
+                    <img
+                      src="assets/images/collection-tees.jpg"
+                      alt="Tees & Tops"
+                    />
+                    <span>TEES & TOPS</span>
+                  </div>
+                  <div class="featured-item">
+                    <img
+                      src="assets/images/collection-outerwear.jpg"
+                      alt="Outerwear"
+                    />
+                    <span>OUTERWEAR</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <a href="/pages/blog.html" class="nav-link">Blog</a>
+          <a href="/pages/about.html" class="nav-link">About</a>
+
+          <a href="#cart" class="cart-icon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -75,46 +151,22 @@
     <!-- Main Content -->
     <main>
       <!-- Hero Section -->
-      <section class="hero parallax-container">
-        <div class="hero-media">
-          <video class="hero-video" autoplay muted loop playsinline>
-            <source src="assets/videos/hero.mp4" type="video/mp4" />
-            <!-- Fallback for browsers that don't support video -->
-            <img
-              src="assets/images/hero.jpg"
-              alt="Fashion model in urban setting"
-              class="hero-image"
-            />
-          </video>
-        </div>
-        <div class="hero-overlay gradient-overlay"></div>
-
-        <div class="hero-content">
-          <span class="hero-tagline split-text-container"
-            >Spring/Summer '24</span
-          >
-          <h1 class="hero-title split-text-container">
-            Redefine
-            <span class="text-gradient text-mask"
-              ><span class="text-mask-content">Your Style</span></span
+      <section class="hero-minimal">
+        <div class="hero-slide">
+          <img
+            src="assets/images/hero.jpg"
+            alt="Spring Summer Collection"
+            class="hero-image"
+          />
+          <div class="hero-content">
+            <span class="hero-tagline">SPRING/SUMMER '24</span>
+            <h1 class="hero-title">REDEFINE YOUR STYLE</h1>
+            <a href="/pages/shop.html" class="btn-minimal"
+              >Explore Collection</a
             >
-          </h1>
-          <p class="hero-description split-text-container">
-            Discover the latest collection of premium streetwear designed for
-            those who dare to stand out. Minimalist aesthetics meets bold
-            expression.
-          </p>
-          <a
-            href="/pages/shop.html"
-            class="btn-primary tactile-button fade-up delay-3"
-            >Explore Collection</a
-          >
+          </div>
         </div>
-
-        <button
-          class="scroll-indicator pulse-on-hover"
-          aria-label="Scroll Down"
-        >
+        <button class="scroll-indicator" aria-label="Scroll Down">
           <span>Scroll</span>
           <svg viewBox="0 0 24 24">
             <path d="M12 5v14M19 12l-7 7-7-7"></path>
@@ -181,90 +233,68 @@
 
       <!-- Collections Grid -->
       <section class="collections-section" id="shop">
-        <div class="parallax-container">
-          <div
-            class="parallax-bg parallax-slow"
-            style="background-image: url('assets/images/texture-bg.jpg')"
-          ></div>
-          <div class="container">
-            <h2 class="collections-title reveal-on-scroll split-text-container">
-              Shop Categories
-            </h2>
-            <p class="collections-subtitle reveal-on-scroll">
-              Curated selections to define your personal style
-            </p>
+        <div class="container">
+          <h2 class="section-title">SHOP CATEGORIES</h2>
+          <p class="section-subtitle">
+            Curated selections to define your personal style
+          </p>
 
-            <div class="collections-grid stagger-container">
-              <article class="collection-item stagger-item">
-                <a
-                  href="/pages/shop.html#tees"
-                  class="collection-link gradient-overlay"
-                >
-                  <img
-                    src="assets/images/collection-tees.jpg"
-                    alt="Oversized tees collection"
-                    class="collection-image"
-                  />
-                  <div class="collection-overlay">
-                    <h3 class="collection-title magnetic-text">
-                      Oversized Tees
-                    </h3>
-                  </div>
-                </a>
-              </article>
+          <div class="category-grid">
+            <article class="category-item">
+              <a href="/pages/shop.html#tees" class="category-link">
+                <img
+                  src="assets/images/collection-tees.jpg"
+                  alt="Oversized tees collection"
+                  class="category-image"
+                />
+                <div class="category-overlay">
+                  <h3 class="category-title">OVERSIZED TEES</h3>
+                </div>
+              </a>
+            </article>
 
-              <article class="collection-item stagger-item">
-                <a
-                  href="/pages/shop.html#outerwear"
-                  class="collection-link gradient-overlay"
-                >
-                  <img
-                    src="assets/images/collection-outerwear.jpg"
-                    alt="Technical outerwear collection"
-                    class="collection-image"
-                  />
-                  <div class="collection-overlay">
-                    <h3 class="collection-title magnetic-text">
-                      Technical Outerwear
-                    </h3>
-                  </div>
-                </a>
-              </article>
+            <article class="category-item">
+              <a href="/pages/shop.html#outerwear" class="category-link">
+                <img
+                  src="assets/images/collection-outerwear.jpg"
+                  alt="Technical outerwear collection"
+                  class="category-image"
+                />
+                <div class="category-overlay">
+                  <h3 class="category-title">TECHNICAL OUTERWEAR</h3>
+                </div>
+              </a>
+            </article>
 
-              <article class="collection-item stagger-item">
-                <a
-                  href="/pages/shop.html#bottoms"
-                  class="collection-link duotone-image"
-                >
-                  <img
-                    src="assets/images/collection-bottoms.jpg"
-                    alt="Premium bottoms collection"
-                    class="collection-image"
-                  />
-                  <div class="collection-overlay">
-                    <h3 class="collection-title magnetic-text">
-                      Premium Bottoms
-                    </h3>
-                  </div>
-                </a>
-              </article>
+            <article class="category-item">
+              <a href="/pages/shop.html#bottoms" class="category-link">
+                <img
+                  src="assets/images/collection-bottoms.jpg"
+                  alt="Premium bottoms collection"
+                  class="category-image"
+                />
+                <div class="category-overlay">
+                  <h3 class="category-title">PREMIUM BOTTOMS</h3>
+                </div>
+              </a>
+            </article>
 
-              <article class="collection-item stagger-item">
-                <a
-                  href="/pages/shop.html#accessories"
-                  class="collection-link duotone-image"
-                >
-                  <img
-                    src="assets/images/collection-accessories.jpg"
-                    alt="Accessories collection"
-                    class="collection-image"
-                  />
-                  <div class="collection-overlay">
-                    <h3 class="collection-title magnetic-text">Accessories</h3>
-                  </div>
-                </a>
-              </article>
-            </div>
+            <article class="category-item">
+              <a href="/pages/shop.html#accessories" class="category-link">
+                <img
+                  src="assets/images/collection-accessories.jpg"
+                  alt="Accessories collection"
+                  class="category-image"
+                />
+                <div class="category-overlay">
+                  <h3 class="category-title">ACCESSORIES</h3>
+                </div>
+              </a>
+            </article>
+          </div>
+
+          <div class="section-cta">
+            <a href="/pages/shop.html" class="btn-minimal">View All Products</a>
           </div>
         </div>
       </section>
@@ -498,89 +528,78 @@
     </main>
 
     <!-- Footer -->
-    <footer class="footer">
+    <footer class="footer-minimal">
       <div class="container">
-        <div class="footer-main">
-          <div class="footer-brand">
-            <a href="/" class="footer-logo magnetic-text">Lionel Bamford</a>
-            <p class="footer-description">
-              Premium streetwear for the modern individual.
-            </p>
-            <div class="social-links">
-              <a href="#" class="social-link hover-lift">Instagram</a>
-              <a href="#" class="social-link hover-lift">Twitter</a>
-              <a href="#" class="social-link hover-lift">Facebook</a>
-            </div>
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h4 class="footer-heading">Contact Us</h4>
+            <ul class="footer-links">
+              <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+              <li><a href="#">Write us on WhatsApp</a></li>
+              <li><a href="/pages/contact.html">Contact Form</a></li>
+              <li><a href="/pages/stores.html">Store Locator</a></li>
+            </ul>
           </div>
 
-          <div class="footer-nav">
-            <div class="footer-nav-column">
-              <h4 class="footer-heading">Shop</h4>
-              <div class="footer-links">
-                <a href="/pages/shop.html" class="footer-link hover-lift"
-                  >All Products</a
-                >
-                <a href="/pages/shop.html#new" class="footer-link hover-lift"
-                  >New Arrivals</a
-                >
-                <a
-                  href="/pages/shop.html#bestsellers"
-                  class="footer-link hover-lift"
-                  >Bestsellers</a
-                >
-                <a href="/pages/shop.html#sale" class="footer-link hover-lift"
-                  >Sale</a
-                >
-              </div>
-            </div>
+          <div class="footer-column">
+            <h4 class="footer-heading">Support</h4>
+            <ul class="footer-links">
+              <li><a href="/pages/faq.html">FAQ</a></li>
+              <li><a href="/pages/shipping.html">Shipping & Returns</a></li>
+              <li><a href="/pages/size-guide.html">Size Guide</a></li>
+              <li><a href="/pages/track-order.html">Track Your Order</a></li>
+            </ul>
+          </div>
 
-            <div class="footer-nav-column">
-              <h4 class="footer-heading">Company</h4>
-              <div class="footer-links">
-                <a href="/pages/about.html" class="footer-link hover-lift"
-                  >About Us</a
-                >
-                <a href="/pages/blog.html" class="footer-link hover-lift"
-                  >Blog</a
-                >
-                <a
-                  href="/pages/about.html#sustainability"
-                  class="footer-link hover-lift"
-                  >Sustainability</a
-                >
-                <a
-                  href="/pages/about.html#careers"
-                  class="footer-link hover-lift"
-                  >Careers</a
-                >
-              </div>
-            </div>
+          <div class="footer-column">
+            <h4 class="footer-heading">Company</h4>
+            <ul class="footer-links">
+              <li><a href="/pages/about.html">About Us</a></li>
+              <li><a href="/pages/sustainability.html">Sustainability</a></li>
+              <li><a href="/pages/careers.html">Careers</a></li>
+              <li><a href="/pages/press.html">Press</a></li>
+            </ul>
+          </div>
 
-            <div class="footer-nav-column">
-              <h4 class="footer-heading">Support</h4>
-              <div class="footer-links">
-                <a href="#" class="footer-link hover-lift"
-                  >Shipping & Returns</a
-                >
-                <a href="#" class="footer-link hover-lift">FAQ</a>
-                <a href="#" class="footer-link hover-lift">Size Guide</a>
-                <a href="#" class="footer-link hover-lift">Contact Us</a>
-              </div>
-            </div>
+          <div class="footer-column">
+            <h4 class="footer-heading">Legal</h4>
+            <ul class="footer-links">
+              <li><a href="/pages/terms.html">Terms & Conditions</a></li>
+              <li><a href="/pages/privacy.html">Privacy Policy</a></li>
+              <li><a href="/pages/cookies.html">Cookie Policy</a></li>
+              <li><a href="/pages/accessibility.html">Accessibility</a></li>
+            </ul>
           </div>
         </div>
 
-        <div class="footer-bottom">
-          <p class="copyright">
-            &copy; <span id="current-year">2023</span> Lionel Bamford. All
-            rights reserved.
+        <div class="footer-newsletter">
+          <h4 class="footer-heading">Subscribe to our newsletter</h4>
+          <form class="newsletter-form">
+            <input
+              type="email"
+              placeholder="Your email address"
+              class="newsletter-input"
+              required
+            />
+            <button type="submit" class="btn-minimal">Subscribe</button>
+          </form>
+          <p class="newsletter-disclaimer">
+            By subscribing, you confirm that you have read and accept our
+            <a href="/pages/privacy.html">Privacy Policy</a>.
           </p>
-          <div class="payment-methods">
-            <img src="assets/images/payment-visa.svg" alt="Visa" />
-            <img src="assets/images/payment-mastercard.svg" alt="Mastercard" />
-            <img src="assets/images/payment-amex.svg" alt="American Express" />
-            <img src="assets/images/payment-paypal.svg" alt="PayPal" />
+        </div>
+
+        <div class="footer-bottom">
+          <div class="footer-logo">
+            <a href="/">Lionel Bamford</a>
           </div>
+          <div class="footer-social">
+            <a href="#" class="social-link">Facebook</a>
+            <a href="#" class="social-link">Instagram</a>
+            <a href="#" class="social-link">Twitter</a>
+            <a href="#" class="social-link">YouTube</a>
+          </div>
+          <div class="footer-copyright">© Lionel Bamford 2023-2024</div>
         </div>
       </div>
     </footer>

@@ -1,6 +1,7 @@
 # Lionel Bamford Website: A Beginner's Guide to Web Development
 
 ## Table of Contents
+
 - [Introduction](#introduction)
 - [Project Overview](#project-overview)
 - [Project Structure](#project-structure)
@@ -26,6 +27,7 @@ If you're new to web development, don't worry! This guide assumes no prior knowl
 Lionel Bamford is a premium clothing brand website that showcases products, collections, blog posts, and more. The website is built using only HTML, CSS, and JavaScript - no frameworks or libraries are used. This makes it a perfect learning tool for understanding the fundamentals of web development.
 
 The website includes:
+
 - A homepage with featured products and collections
 - Product pages with detailed information
 - A blog section
@@ -70,6 +72,7 @@ lionelbamford.com/
 ```
 
 This structure follows a common pattern in web development:
+
 - **assets**: Contains all media files
 - **css**: Contains all styling information
 - **js**: Contains all JavaScript code
@@ -79,34 +82,40 @@ This structure follows a common pattern in web development:
 ## Key Technologies
 
 ### HTML (HyperText Markup Language)
+
 HTML is the standard markup language for creating web pages. It defines the structure of the content on a webpage using elements like headings, paragraphs, images, links, and more.
 
 Example:
+
 ```html
 <h1>Welcome to Lionel Bamford</h1>
 <p>Premium clothing for the modern individual.</p>
 ```
 
 ### CSS (Cascading Style Sheets)
+
 CSS is used to style and layout web pages. It controls how HTML elements are displayed on screen, including colors, fonts, spacing, and more.
 
 Example:
+
 ```css
 h1 {
-    color: #333;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+  color: #333;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 ```
 
 ### JavaScript
+
 JavaScript is a programming language that enables interactive elements on web pages. It can be used to create dynamic content, validate forms, handle user interactions, and more.
 
 Example:
+
 ```javascript
-document.addEventListener('DOMContentLoaded', function() {
-    // This code runs when the page is fully loaded
-    console.log('Page loaded!');
+document.addEventListener("DOMContentLoaded", function () {
+  // This code runs when the page is fully loaded
+  console.log("Page loaded!");
 });
 ```
 
@@ -124,32 +133,32 @@ Here's a simplified example:
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lionel Bamford - Premium Streetwear</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-</head>
-<body>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <!-- Navigation -->
+      <!-- Navigation -->
     </header>
-    
+
     <!-- Main Content -->
     <main>
-        <!-- Page content goes here -->
+      <!-- Page content goes here -->
     </main>
-    
+
     <!-- Footer -->
     <footer>
-        <!-- Footer content -->
+      <!-- Footer content -->
     </footer>
-    
+
     <!-- JavaScript -->
     <script src="js/main.js"></script>
-</body>
+  </body>
 </html>
 ```
 
@@ -182,20 +191,20 @@ The project uses CSS variables (also called custom properties) to maintain consi
 
 ```css
 :root {
-    /* Colors */
-    --color-primary: #333;
-    --color-secondary: #666;
-    --color-accent: #f0f0f0;
-    
-    /* Typography */
-    --font-primary: 'Playfair Display', serif;
-    --font-secondary: Arial, sans-serif;
-    
-    /* Spacing */
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 2rem;
-    --spacing-lg: 4rem;
+  /* Colors */
+  --color-primary: #333;
+  --color-secondary: #666;
+  --color-accent: #f0f0f0;
+
+  /* Typography */
+  --font-primary: "Playfair Display", serif;
+  --font-secondary: Arial, sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
 }
 ```
 
@@ -203,9 +212,9 @@ These variables can be used throughout the CSS:
 
 ```css
 h1 {
-    color: var(--color-primary);
-    font-family: var(--font-primary);
-    margin-bottom: var(--spacing-md);
+  color: var(--color-primary);
+  font-family: var(--font-primary);
+  margin-bottom: var(--spacing-md);
 }
 ```
 
@@ -216,13 +225,13 @@ The CSS includes media queries to make the website responsive on different scree
 ```css
 /* Mobile styles */
 @media (max-width: 768px) {
-    .container {
-        padding: 0 var(--spacing-sm);
-    }
-    
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
+  .container {
+    padding: 0 var(--spacing-sm);
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 }
 ```
 
@@ -240,16 +249,16 @@ The JavaScript in this project is organized into multiple files, each handling s
 JavaScript uses event listeners to respond to user actions:
 
 ```javascript
-document.addEventListener('DOMContentLoaded', function() {
-    // This code runs when the page is fully loaded
-    
-    // Add click event to buttons
-    const buttons = document.querySelectorAll('.btn-primary');
-    buttons.forEach(button => {
-        button.addEventListener('click', function() {
-            console.log('Button clicked!');
-        });
+document.addEventListener("DOMContentLoaded", function () {
+  // This code runs when the page is fully loaded
+
+  // Add click event to buttons
+  const buttons = document.querySelectorAll(".btn-primary");
+  buttons.forEach((button) => {
+    button.addEventListener("click", function () {
+      console.log("Button clicked!");
     });
+  });
 });
 ```
 
@@ -259,17 +268,17 @@ JavaScript can modify the HTML structure (the DOM) to create dynamic content:
 
 ```javascript
 function createProductCard(product) {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    
-    card.innerHTML = `
+  const card = document.createElement("div");
+  card.className = "product-card";
+
+  card.innerHTML = `
         <img src="${product.image}" alt="${product.name}">
         <h3>${product.name}</h3>
         <p>$${product.price}</p>
         <button class="add-to-cart" data-id="${product.id}">Add to Cart</button>
     `;
-    
-    return card;
+
+  return card;
 }
 ```
 
@@ -287,28 +296,28 @@ Example from `products.js`:
 
 ```javascript
 const products = [
-    {
-        id: 1,
-        name: 'Linen Blend Shirt',
-        price: 89.99,
-        category: 'Shirts',
-        description: 'A lightweight linen blend shirt perfect for summer days.',
-        sizes: ['S', 'M', 'L', 'XL'],
-        colors: ['White', 'Blue', 'Black'],
-        images: [
-            'assets/images/products/linen-blend-shirt.jpg',
-            'assets/images/products/linen-blend-shirt-2.jpg'
-        ],
-        featured: true,
-        new: true,
-        inStock: true
-    },
-    // More products...
+  {
+    id: 1,
+    name: "Linen Blend Shirt",
+    price: 89.99,
+    category: "Shirts",
+    description: "A lightweight linen blend shirt perfect for summer days.",
+    sizes: ["S", "M", "L", "XL"],
+    colors: ["White", "Blue", "Black"],
+    images: [
+      "assets/images/products/linen-blend-shirt.jpg",
+      "assets/images/products/linen-blend-shirt-2.jpg",
+    ],
+    featured: true,
+    new: true,
+    inStock: true,
+  },
+  // More products...
 ];
 
 // Export the products data
-if (typeof module !== 'undefined' && module.exports) {
-    module.exports = products;
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = products;
 }
 ```
 
@@ -322,28 +331,28 @@ The header contains the site logo and navigation menu. It's present on all pages
 
 ```html
 <header id="header" class="header">
-    <div class="container header-container">
-        <a href="/" class="logo">Lionel Bamford</a>
-        
-        <button class="menu-toggle" aria-label="Toggle Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        
-        <nav class="nav-menu" aria-label="Main Navigation">
-            <a href="/" class="nav-link active">Home</a>
-            <a href="/pages/shop.html" class="nav-link">Shop</a>
-            <a href="/pages/collections.html" class="nav-link">Collections</a>
-            <a href="/pages/blog.html" class="nav-link">Blog</a>
-            <a href="/pages/about.html" class="nav-link">About</a>
-            
-            <a href="#cart" class="cart-icon">
-                <!-- Cart icon SVG -->
-                <span class="cart-count">0</span>
-            </a>
-        </nav>
-    </div>
+  <div class="container header-container">
+    <a href="/" class="logo">Lionel Bamford</a>
+
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-menu" aria-label="Main Navigation">
+      <a href="/" class="nav-link active">Home</a>
+      <a href="/pages/shop.html" class="nav-link">Shop</a>
+      <a href="/pages/collections.html" class="nav-link">Collections</a>
+      <a href="/pages/blog.html" class="nav-link">Blog</a>
+      <a href="/pages/about.html" class="nav-link">About</a>
+
+      <a href="#cart" class="cart-icon">
+        <!-- Cart icon SVG -->
+        <span class="cart-count">0</span>
+      </a>
+    </nav>
+  </div>
 </header>
 ```
 
@@ -353,20 +362,31 @@ The hero section is the first thing visitors see on the homepage. It typically c
 
 ```html
 <section class="hero">
-    <div class="hero-media">
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="assets/videos/hero.mp4" type="video/mp4">
-            <img src="assets/images/hero.jpg" alt="Fashion model in urban setting" class="hero-image">
-        </video>
-    </div>
-    <div class="hero-overlay"></div>
-    
-    <div class="hero-content">
-        <span class="hero-tagline fade-up">Spring/Summer '24</span>
-        <h1 class="hero-title fade-up delay-1">Redefine <span class="text-gradient">Your Style</span></h1>
-        <p class="hero-description fade-up delay-2">Discover the latest collection of premium streetwear designed for those who dare to stand out.</p>
-        <a href="/pages/shop.html" class="btn-primary fade-up delay-3">Explore Collection</a>
-    </div>
+  <div class="hero-media">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="assets/videos/hero.mp4" type="video/mp4" />
+      <img
+        src="assets/images/hero.jpg"
+        alt="Fashion model in urban setting"
+        class="hero-image"
+      />
+    </video>
+  </div>
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <span class="hero-tagline fade-up">Spring/Summer '24</span>
+    <h1 class="hero-title fade-up delay-1">
+      Redefine <span class="text-gradient">Your Style</span>
+    </h1>
+    <p class="hero-description fade-up delay-2">
+      Discover the latest collection of premium streetwear designed for those
+      who dare to stand out.
+    </p>
+    <a href="/pages/shop.html" class="btn-primary fade-up delay-3"
+      >Explore Collection</a
+    >
+  </div>
 </section>
 ```
 
@@ -376,12 +396,14 @@ The product grid displays multiple products in a responsive grid layout.
 
 ```html
 <div class="product-grid">
-    <div class="product-card">
-        <div class="product-image"><img src="../assets/images/products/shirt.jpg" alt="Linen Blend Shirt"></div>
-        <h4 class="product-title">Linen Blend Shirt</h4>
-        <p class="product-price">$85.00</p>
+  <div class="product-card">
+    <div class="product-image">
+      <img src="../assets/images/products/shirt.jpg" alt="Linen Blend Shirt" />
     </div>
-    <!-- More product cards -->
+    <h4 class="product-title">Linen Blend Shirt</h4>
+    <p class="product-price">$85.00</p>
+  </div>
+  <!-- More product cards -->
 </div>
 ```
 
@@ -391,15 +413,23 @@ The newsletter section allows visitors to sign up for email updates.
 
 ```html
 <section class="newsletter-section">
-    <div class="container newsletter-container">
-        <h2 class="newsletter-title fade-up">Stay Connected</h2>
-        <p class="newsletter-subtitle fade-up delay-1">Subscribe to our newsletter for exclusive updates and early access to new releases.</p>
-        
-        <form class="newsletter-form fade-up delay-2">
-            <input type="email" class="newsletter-input" placeholder="Your email address" required>
-            <button type="submit" class="newsletter-button">Subscribe</button>
-        </form>
-    </div>
+  <div class="container newsletter-container">
+    <h2 class="newsletter-title fade-up">Stay Connected</h2>
+    <p class="newsletter-subtitle fade-up delay-1">
+      Subscribe to our newsletter for exclusive updates and early access to new
+      releases.
+    </p>
+
+    <form class="newsletter-form fade-up delay-2">
+      <input
+        type="email"
+        class="newsletter-input"
+        placeholder="Your email address"
+        required
+      />
+      <button type="submit" class="newsletter-button">Subscribe</button>
+    </form>
+  </div>
 </section>
 ```
 
@@ -409,33 +439,37 @@ The footer contains links to important pages, social media icons, and copyright 
 
 ```html
 <footer class="footer" id="contact">
-    <div class="container">
-        <div class="footer-main">
-            <div class="footer-brand">
-                <a href="/" class="footer-logo">Lionel Bamford</a>
-                <p class="footer-description">Redefining contemporary streetwear with precision craftsmanship and innovative design.</p>
-                
-                <div class="social-links">
-                    <!-- Social media links -->
-                </div>
-            </div>
-            
-            <div class="footer-nav">
-                <h3 class="footer-heading">Shop</h3>
-                <ul class="footer-links">
-                    <!-- Footer links -->
-                </ul>
-            </div>
-            
-            <!-- More footer sections -->
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">Lionel Bamford</a>
+        <p class="footer-description">
+          Redefining contemporary streetwear with precision craftsmanship and
+          innovative design.
+        </p>
+
+        <div class="social-links">
+          <!-- Social media links -->
         </div>
-        
-        <div class="footer-bottom">
-            <div class="copyright">
-                © <span id="current-year">2024</span> Lionel Bamford. All rights reserved.
-            </div>
-        </div>
+      </div>
+
+      <div class="footer-nav">
+        <h3 class="footer-heading">Shop</h3>
+        <ul class="footer-links">
+          <!-- Footer links -->
+        </ul>
+      </div>
+
+      <!-- More footer sections -->
     </div>
+
+    <div class="footer-bottom">
+      <div class="copyright">
+        © <span id="current-year">2024</span> Lionel Bamford. All rights
+        reserved.
+      </div>
+    </div>
+  </div>
 </footer>
 ```
 
@@ -451,27 +485,27 @@ Example of a responsive grid:
 
 ```css
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 
 @media (max-width: 1024px) {
-    .product-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 480px) {
-    .product-grid {
-        grid-template-columns: 1fr;
-    }
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
 }
 ```
 
@@ -507,9 +541,9 @@ Example of Flexbox:
 
 ```css
 .nav-menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 ```
 
@@ -517,9 +551,9 @@ Example of Grid:
 
 ```css
 .product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 ```
 
@@ -579,4 +613,4 @@ Congratulations! You've now learned the basics of how the Lionel Bamford website
 
 Remember that web development is a vast field, and there's always more to learn. Start with the basics, practice regularly, and gradually build up your skills. With time and dedication, you'll be able to create your own websites from scratch!
 
-Happy coding! 
+Happy coding!

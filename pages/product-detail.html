@@ -1,386 +1,450 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Linen Blend Shirt | Lionel Bamford</title>
     <!-- CSS imports -->
-    <link rel="stylesheet" href="../css/normalize.css">
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/components/header.css">
-    <link rel="stylesheet" href="../css/components/products.css">
-    <link rel="stylesheet" href="../css/components/newsletter.css">
-    <link rel="stylesheet" href="../css/components/footer.css">
+    <link rel="stylesheet" href="../css/normalize.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="../css/components/header.css" />
+    <link rel="stylesheet" href="../css/components/products.css" />
+    <link rel="stylesheet" href="../css/components/newsletter.css" />
+    <link rel="stylesheet" href="../css/components/footer.css" />
     <style>
-        /* Product detail page specific styles */
+      /* Product detail page specific styles */
+      .product-detail {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        margin-bottom: 80px;
+      }
+
+      .product-gallery {
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 20px;
+      }
+
+      .thumbnail-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .thumbnail {
+        width: 100%;
+        aspect-ratio: 1;
+        object-fit: cover;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.3s;
+      }
+
+      .thumbnail.active {
+        opacity: 1;
+        border: 1px solid #333;
+      }
+
+      .thumbnail:hover {
+        opacity: 1;
+      }
+
+      .main-image {
+        width: 100%;
+        aspect-ratio: 3/4;
+        object-fit: cover;
+      }
+
+      .product-info {
+        padding-top: 20px;
+      }
+
+      .product-detail-title {
+        font-size: 1.8rem;
+        font-weight: 400;
+        margin-bottom: 10px;
+      }
+
+      .product-detail-price {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        color: #333;
+      }
+
+      .product-description {
+        margin-bottom: 30px;
+        line-height: 1.8;
+        color: #666;
+      }
+
+      .product-options {
+        margin-bottom: 30px;
+      }
+
+      .option-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+      }
+
+      .size-options {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .size-option {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ddd;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .size-option:hover {
+        border-color: #333;
+      }
+
+      .size-option.selected {
+        background-color: #333;
+        color: white;
+        border-color: #333;
+      }
+
+      .color-options {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      .color-option {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.3s;
+        position: relative;
+      }
+
+      .color-option:hover {
+        transform: scale(1.1);
+      }
+
+      .color-option.selected::after {
+        content: "";
+        position: absolute;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #333;
+        border-radius: 50%;
+        top: -5px;
+        left: -5px;
+      }
+
+      .quantity-selector {
+        display: flex;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+
+      .quantity-btn {
+        width: 40px;
+        height: 40px;
+        background: none;
+        border: 1px solid #ddd;
+        font-size: 1.2rem;
+        cursor: pointer;
+      }
+
+      .quantity-btn:hover {
+        background-color: #f9f9f9;
+      }
+
+      .quantity-input {
+        width: 60px;
+        height: 40px;
+        text-align: center;
+        border: 1px solid #ddd;
+        border-left: none;
+        border-right: none;
+        font-size: 1rem;
+      }
+
+      .add-to-cart-btn {
+        width: 100%;
+        padding: 15px;
+        background-color: #333;
+        color: white;
+        border: none;
+        font-size: 1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        margin-bottom: 20px;
+      }
+
+      .add-to-cart-btn:hover {
+        background-color: #555;
+      }
+
+      .wishlist-btn {
+        width: 100%;
+        padding: 15px;
+        background: none;
+        border: 1px solid #ddd;
+        font-size: 1rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .wishlist-btn:hover {
+        background-color: #f9f9f9;
+      }
+
+      .product-meta {
+        margin-top: 30px;
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .meta-item {
+        margin-bottom: 5px;
+      }
+
+      .related-products {
+        margin-top: 80px;
+      }
+
+      @media (max-width: 768px) {
         .product-detail {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            margin-bottom: 80px;
+          grid-template-columns: 1fr;
         }
-        
-        .product-gallery {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 20px;
-        }
-        
-        .thumbnail-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .thumbnail {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: opacity 0.3s;
-        }
-        
-        .thumbnail.active {
-            opacity: 1;
-            border: 1px solid #333;
-        }
-        
-        .thumbnail:hover {
-            opacity: 1;
-        }
-        
-        .main-image {
-            width: 100%;
-            aspect-ratio: 3/4;
-            object-fit: cover;
-        }
-        
-        .product-info {
-            padding-top: 20px;
-        }
-        
-        .product-detail-title {
-            font-size: 1.8rem;
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
-        
-        .product-detail-price {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .product-description {
-            margin-bottom: 30px;
-            line-height: 1.8;
-            color: #666;
-        }
-        
-        .product-options {
-            margin-bottom: 30px;
-        }
-        
-        .option-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .size-options {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .size-option {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid #ddd;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .size-option:hover {
-            border-color: #333;
-        }
-        
-        .size-option.selected {
-            background-color: #333;
-            color: white;
-            border-color: #333;
-        }
-        
-        .color-options {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .color-option {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s;
-            position: relative;
-        }
-        
-        .color-option:hover {
-            transform: scale(1.1);
-        }
-        
-        .color-option.selected::after {
-            content: '';
-            position: absolute;
-            width: 40px;
-            height: 40px;
-            border: 1px solid #333;
-            border-radius: 50%;
-            top: -5px;
-            left: -5px;
-        }
-        
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .quantity-btn {
-            width: 40px;
-            height: 40px;
-            background: none;
-            border: 1px solid #ddd;
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-        
-        .quantity-btn:hover {
-            background-color: #f9f9f9;
-        }
-        
-        .quantity-input {
-            width: 60px;
-            height: 40px;
-            text-align: center;
-            border: 1px solid #ddd;
-            border-left: none;
-            border-right: none;
-            font-size: 1rem;
-        }
-        
-        .add-to-cart-btn {
-            width: 100%;
-            padding: 15px;
-            background-color: #333;
-            color: white;
-            border: none;
-            font-size: 1rem;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin-bottom: 20px;
-        }
-        
-        .add-to-cart-btn:hover {
-            background-color: #555;
-        }
-        
-        .wishlist-btn {
-            width: 100%;
-            padding: 15px;
-            background: none;
-            border: 1px solid #ddd;
-            font-size: 1rem;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .wishlist-btn:hover {
-            background-color: #f9f9f9;
-        }
-        
-        .product-meta {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        .meta-item {
-            margin-bottom: 5px;
-        }
-        
-        .related-products {
-            margin-top: 80px;
-        }
-        
-        @media (max-width: 768px) {
-            .product-detail {
-                grid-template-columns: 1fr;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="shop.html" class="active">SHOP</a></li>
-                <li><a href="collections.html">COLLECTIONS</a></li>
-                <li><a href="blog.html">BLOG</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-            </ul>
-        </nav>
-        <div class="search-cart">
-            <a href="#">Search</a>
-            <a href="#">Cart (0)</a>
-        </div>
+      <nav>
+        <ul>
+          <li><a href="shop.html" class="active">SHOP</a></li>
+          <li><a href="collections.html">COLLECTIONS</a></li>
+          <li><a href="blog.html">BLOG</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+        </ul>
+      </nav>
+      <div class="search-cart">
+        <a href="#">Search</a>
+        <a href="#">Cart (0)</a>
+      </div>
     </header>
-    
+
     <section class="section-container">
-        <div class="product-detail">
-            <div class="product-gallery">
-                <div class="thumbnail-container">
-                    <img src="../assets/images/products/shirt-1.jpg" alt="Linen Blend Shirt thumbnail 1" class="thumbnail active">
-                    <img src="../assets/images/products/shirt-2.jpg" alt="Linen Blend Shirt thumbnail 2" class="thumbnail">
-                    <img src="../assets/images/products/shirt-3.jpg" alt="Linen Blend Shirt thumbnail 3" class="thumbnail">
-                    <img src="../assets/images/products/shirt-4.jpg" alt="Linen Blend Shirt thumbnail 4" class="thumbnail">
-                </div>
-                <img src="../assets/images/products/shirt-1.jpg" alt="Linen Blend Shirt" class="main-image">
-            </div>
-            
-            <div class="product-info">
-                <h2 class="product-detail-title">Linen Blend Shirt</h2>
-                <p class="product-detail-price">$85.00</p>
-                
-                <div class="product-description">
-                    <p>A lightweight and breathable shirt crafted from premium linen-cotton blend fabric. Perfect for warm weather, this versatile piece features a relaxed fit, classic collar, and subtle texture that elevates any casual look.</p>
-                    <p>The natural properties of linen make this shirt both cooling and durable, while the addition of cotton ensures comfort and reduced wrinkling.</p>
-                </div>
-                
-                <div class="product-options">
-                    <label class="option-label">Size:</label>
-                    <div class="size-options">
-                        <div class="size-option">S</div>
-                        <div class="size-option selected">M</div>
-                        <div class="size-option">L</div>
-                        <div class="size-option">XL</div>
-                    </div>
-                    
-                    <label class="option-label">Color:</label>
-                    <div class="color-options">
-                        <div class="color-option selected" style="background-color: #f5f5dc;"></div>
-                        <div class="color-option" style="background-color: #d3d3d3;"></div>
-                        <div class="color-option" style="background-color: #add8e6;"></div>
-                    </div>
-                </div>
-                
-                <div class="quantity-selector">
-                    <button class="quantity-btn" id="decrease-quantity">-</button>
-                    <input type="number" value="1" min="1" class="quantity-input">
-                    <button class="quantity-btn" id="increase-quantity">+</button>
-                </div>
-                
-                <button class="add-to-cart-btn" data-product-id="1" data-product-name="Linen Blend Shirt" data-product-price="85.00">Add to Cart</button>
-                <button class="wishlist-btn">Add to Wishlist</button>
-                
-                <div class="product-meta">
-                    <div class="meta-item">SKU: LBS-2025-001</div>
-                    <div class="meta-item">Category: Shirts</div>
-                    <div class="meta-item">Tags: Summer, Linen, Casual</div>
-                </div>
-            </div>
+      <div class="product-detail">
+        <div class="product-gallery">
+          <div class="thumbnail-container">
+            <img
+              src="../assets/images/products/shirt-1.jpg"
+              alt="Linen Blend Shirt thumbnail 1"
+              class="thumbnail active"
+            />
+            <img
+              src="../assets/images/products/shirt-2.jpg"
+              alt="Linen Blend Shirt thumbnail 2"
+              class="thumbnail"
+            />
+            <img
+              src="../assets/images/products/shirt-3.jpg"
+              alt="Linen Blend Shirt thumbnail 3"
+              class="thumbnail"
+            />
+            <img
+              src="../assets/images/products/shirt-4.jpg"
+              alt="Linen Blend Shirt thumbnail 4"
+              class="thumbnail"
+            />
+          </div>
+          <img
+            src="../assets/images/products/shirt-1.jpg"
+            alt="Linen Blend Shirt"
+            class="main-image"
+          />
         </div>
+
+        <div class="product-info">
+          <h2 class="product-detail-title">Linen Blend Shirt</h2>
+          <p class="product-detail-price">$85.00</p>
+
+          <div class="product-description">
+            <p>
+              A lightweight and breathable shirt crafted from premium
+              linen-cotton blend fabric. Perfect for warm weather, this
+              versatile piece features a relaxed fit, classic collar, and subtle
+              texture that elevates any casual look.
+            </p>
+            <p>
+              The natural properties of linen make this shirt both cooling and
+              durable, while the addition of cotton ensures comfort and reduced
+              wrinkling.
+            </p>
+          </div>
+
+          <div class="product-options">
+            <label class="option-label">Size:</label>
+            <div class="size-options">
+              <div class="size-option">S</div>
+              <div class="size-option selected">M</div>
+              <div class="size-option">L</div>
+              <div class="size-option">XL</div>
+            </div>
+
+            <label class="option-label">Color:</label>
+            <div class="color-options">
+              <div
+                class="color-option selected"
+                style="background-color: #f5f5dc"
+              ></div>
+              <div class="color-option" style="background-color: #d3d3d3"></div>
+              <div class="color-option" style="background-color: #add8e6"></div>
+            </div>
+          </div>
+
+          <div class="quantity-selector">
+            <button class="quantity-btn" id="decrease-quantity">-</button>
+            <input type="number" value="1" min="1" class="quantity-input" />
+            <button class="quantity-btn" id="increase-quantity">+</button>
+          </div>
+
+          <button
+            class="add-to-cart-btn"
+            data-product-id="1"
+            data-product-name="Linen Blend Shirt"
+            data-product-price="85.00"
+          >
+            Add to Cart
+          </button>
+          <button class="wishlist-btn">Add to Wishlist</button>
+
+          <div class="product-meta">
+            <div class="meta-item">SKU: LBS-2025-001</div>
+            <div class="meta-item">Category: Shirts</div>
+            <div class="meta-item">Tags: Summer, Linen, Casual</div>
+          </div>
+        </div>
+      </div>
     </section>
-    
+
     <section class="section-container related-products">
-        <h3 class="section-title">You May Also Like</h3>
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-image"><img src="../assets/images/products/chinos.jpg" alt="Relaxed Chinos"></div>
-                <h4 class="product-title">Relaxed Chinos</h4>
-                <p class="product-price">$75.00</p>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="../assets/images/products/jacket.jpg" alt="Summer Jacket"></div>
-                <h4 class="product-title">Summer Jacket</h4>
-                <p class="product-price">$110.00</p>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="../assets/images/products/tee.jpg" alt="Signature Tee"></div>
-                <h4 class="product-title">Signature Tee</h4>
-                <p class="product-price">$45.00</p>
-            </div>
-            <div class="product-card">
-                <div class="product-image"><img src="../assets/images/products/shorts.jpg" alt="Linen Shorts"></div>
-                <h4 class="product-title">Linen Shorts</h4>
-                <p class="product-price">$65.00</p>
-            </div>
+      <h3 class="section-title">You May Also Like</h3>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="../assets/images/products/chinos.jpg"
+              alt="Relaxed Chinos"
+            />
+          </div>
+          <h4 class="product-title">Relaxed Chinos</h4>
+          <p class="product-price">$75.00</p>
         </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="../assets/images/products/jacket.jpg"
+              alt="Summer Jacket"
+            />
+          </div>
+          <h4 class="product-title">Summer Jacket</h4>
+          <p class="product-price">$110.00</p>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img src="../assets/images/products/tee.jpg" alt="Signature Tee" />
+          </div>
+          <h4 class="product-title">Signature Tee</h4>
+          <p class="product-price">$45.00</p>
+        </div>
+        <div class="product-card">
+          <div class="product-image">
+            <img
+              src="../assets/images/products/shorts.jpg"
+              alt="Linen Shorts"
+            />
+          </div>
+          <h4 class="product-title">Linen Shorts</h4>
+          <p class="product-price">$65.00</p>
+        </div>
+      </div>
     </section>
-    
+
     <section class="newsletter">
-        <h3>JOIN OUR NEWSLETTER</h3>
-        <p>Be the first to know about new collections, exclusive offers, and seasonal style guides.</p>
-        <form class="newsletter-form">
-            <input type="email" placeholder="Your email address" class="newsletter-input" required>
-            <button type="submit" class="newsletter-button">SUBSCRIBE</button>
-        </form>
+      <h3>JOIN OUR NEWSLETTER</h3>
+      <p>
+        Be the first to know about new collections, exclusive offers, and
+        seasonal style guides.
+      </p>
+      <form class="newsletter-form">
+        <input
+          type="email"
+          placeholder="Your email address"
+          class="newsletter-input"
+          required
+        />
+        <button type="submit" class="newsletter-button">SUBSCRIBE</button>
+      </form>
     </section>
-    
+
     <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h4>Customer Service</h4>
-                <ul>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Shipping & Delivery</a></li>
-                    <li><a href="#">Returns & Exchanges</a></li>
-                    <li><a href="#">FAQs</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>My Account</h4>
-                <ul>
-                    <li><a href="#">Sign In</a></li>
-                    <li><a href="#">Order History</a></li>
-                    <li><a href="#">Wish List</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>About Us</h4>
-                <ul>
-                    <li><a href="about.html">Our Story</a></li>
-                    <li><a href="#">Sustainability</a></li>
-                    <li><a href="#">Store Locator</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-column">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Accessibility</a></li>
-                </ul>
-            </div>
+      <div class="footer-content">
+        <div class="footer-column">
+          <h4>Customer Service</h4>
+          <ul>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Shipping & Delivery</a></li>
+            <li><a href="#">Returns & Exchanges</a></li>
+            <li><a href="#">FAQs</a></li>
+          </ul>
         </div>
-        
-        <div class="social-links">
-            <a href="#">FB</a>
-            <a href="#">IG</a>
-            <a href="#">TW</a>
+        <div class="footer-column">
+          <h4>My Account</h4>
+          <ul>
+            <li><a href="#">Sign In</a></li>
+            <li><a href="#">Order History</a></li>
+            <li><a href="#">Wish List</a></li>
+          </ul>
         </div>
-        
-        <div class="footer-bottom">
-            <p>© 2025 Lionel Bamford. All rights reserved.</p>
+        <div class="footer-column">
+          <h4>About Us</h4>
+          <ul>
+            <li><a href="about.html">Our Story</a></li>
+            <li><a href="#">Sustainability</a></li>
+            <li><a href="#">Store Locator</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
         </div>
+        <div class="footer-column">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Accessibility</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="#">FB</a>
+        <a href="#">IG</a>
+        <a href="#">TW</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Lionel Bamford. All rights reserved.</p>
+      </div>
     </footer>
 
     <!-- JavaScript imports -->
@@ -389,83 +453,87 @@
     <script src="../js/newsletter.js"></script>
     <script src="../js/search.js"></script>
     <script>
-        // Product detail specific JavaScript
-        document.addEventListener('DOMContentLoaded', function() {
-            // Thumbnail gallery functionality
-            const thumbnails = document.querySelectorAll('.thumbnail');
-            const mainImage = document.querySelector('.main-image');
-            
-            thumbnails.forEach(thumbnail => {
-                thumbnail.addEventListener('click', function() {
-                    // Update active thumbnail
-                    thumbnails.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update main image
-                    mainImage.src = this.src;
-                    mainImage.alt = this.alt;
-                });
-            });
-            
-            // Size selection
-            const sizeOptions = document.querySelectorAll('.size-option');
-            sizeOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    sizeOptions.forEach(o => o.classList.remove('selected'));
-                    this.classList.add('selected');
-                });
-            });
-            
-            // Color selection
-            const colorOptions = document.querySelectorAll('.color-option');
-            colorOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    colorOptions.forEach(o => o.classList.remove('selected'));
-                    this.classList.add('selected');
-                });
-            });
-            
-            // Quantity buttons
-            const decreaseBtn = document.getElementById('decrease-quantity');
-            const increaseBtn = document.getElementById('increase-quantity');
-            const quantityInput = document.querySelector('.quantity-input');
-            
-            decreaseBtn.addEventListener('click', function() {
-                let value = parseInt(quantityInput.value);
-                if (value > 1) {
-                    quantityInput.value = value - 1;
-                }
-            });
-            
-            increaseBtn.addEventListener('click', function() {
-                let value = parseInt(quantityInput.value);
-                quantityInput.value = value + 1;
-            });
-            
-            // Add to cart functionality
-            const addToCartBtn = document.querySelector('.add-to-cart-btn');
-            addToCartBtn.addEventListener('click', function() {
-                const productId = this.dataset.productId;
-                const productName = this.dataset.productName;
-                const productPrice = parseFloat(this.dataset.productPrice);
-                const quantity = parseInt(quantityInput.value);
-                const size = document.querySelector('.size-option.selected').textContent;
-                const colorEl = document.querySelector('.color-option.selected');
-                const color = window.getComputedStyle(colorEl).backgroundColor;
-                
-                // Add to cart using the cart.js functionality
-                addToCart({
-                    id: productId,
-                    name: productName,
-                    price: productPrice,
-                    quantity: quantity,
-                    size: size,
-                    color: color
-                });
-                
-                console.log(`Added to cart: ${quantity} x ${productName} (${size}, ${color})`);
-            });
+      // Product detail specific JavaScript
+      document.addEventListener("DOMContentLoaded", function () {
+        // Thumbnail gallery functionality
+        const thumbnails = document.querySelectorAll(".thumbnail");
+        const mainImage = document.querySelector(".main-image");
+
+        thumbnails.forEach((thumbnail) => {
+          thumbnail.addEventListener("click", function () {
+            // Update active thumbnail
+            thumbnails.forEach((t) => t.classList.remove("active"));
+            this.classList.add("active");
+
+            // Update main image
+            mainImage.src = this.src;
+            mainImage.alt = this.alt;
+          });
         });
+
+        // Size selection
+        const sizeOptions = document.querySelectorAll(".size-option");
+        sizeOptions.forEach((option) => {
+          option.addEventListener("click", function () {
+            sizeOptions.forEach((o) => o.classList.remove("selected"));
+            this.classList.add("selected");
+          });
+        });
+
+        // Color selection
+        const colorOptions = document.querySelectorAll(".color-option");
+        colorOptions.forEach((option) => {
+          option.addEventListener("click", function () {
+            colorOptions.forEach((o) => o.classList.remove("selected"));
+            this.classList.add("selected");
+          });
+        });
+
+        // Quantity buttons
+        const decreaseBtn = document.getElementById("decrease-quantity");
+        const increaseBtn = document.getElementById("increase-quantity");
+        const quantityInput = document.querySelector(".quantity-input");
+
+        decreaseBtn.addEventListener("click", function () {
+          let value = parseInt(quantityInput.value);
+          if (value > 1) {
+            quantityInput.value = value - 1;
+          }
+        });
+
+        increaseBtn.addEventListener("click", function () {
+          let value = parseInt(quantityInput.value);
+          quantityInput.value = value + 1;
+        });
+
+        // Add to cart functionality
+        const addToCartBtn = document.querySelector(".add-to-cart-btn");
+        addToCartBtn.addEventListener("click", function () {
+          const productId = this.dataset.productId;
+          const productName = this.dataset.productName;
+          const productPrice = parseFloat(this.dataset.productPrice);
+          const quantity = parseInt(quantityInput.value);
+          const size = document.querySelector(
+            ".size-option.selected",
+          ).textContent;
+          const colorEl = document.querySelector(".color-option.selected");
+          const color = window.getComputedStyle(colorEl).backgroundColor;
+
+          // Add to cart using the cart.js functionality
+          addToCart({
+            id: productId,
+            name: productName,
+            price: productPrice,
+            quantity: quantity,
+            size: size,
+            color: color,
+          });
+
+          console.log(
+            `Added to cart: ${quantity} x ${productName} (${size}, ${color})`,
+          );
+        });
+      });
     </script>
-</body>
-</html> 
+  </body>
+</html>

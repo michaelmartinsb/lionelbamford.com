@@ -49,6 +49,7 @@ lionelbamford.com/
 ## Features
 
 ### Implemented
+
 - Responsive design for all device sizes
 - Interactive product gallery
 - Shopping cart functionality with local storage
@@ -58,12 +59,14 @@ lionelbamford.com/
 - Smooth scrolling and animations
 
 ### In Progress
+
 - Product filtering and sorting
 - Enhanced UI/UX for product detail pages
 - Improved accessibility features
 - Performance optimization
 
 ### Backend Integration (Future)
+
 - User authentication
 - Full shopping cart checkout
 - Product reviews and ratings
@@ -74,6 +77,7 @@ lionelbamford.com/
 ## Getting Started
 
 1. Clone the repository:
+
    ```
    git clone https://github.com/yourusername/lionelbamford.com.git
    ```
@@ -85,6 +89,7 @@ lionelbamford.com/
 ## Browser Support
 
 The website is compatible with:
+
 - Chrome (latest)
 - Firefox (latest)
 - Safari (latest)
@@ -116,16 +121,19 @@ The website includes several JavaScript modules:
 During the design_mode phase, we are focusing on:
 
 1. **UI/UX Refinement**
+
    - Improving visual consistency
    - Enhancing user interactions
    - Optimizing responsive layouts
 
 2. **Performance Optimization**
+
    - Reducing page load times
    - Optimizing images and assets
    - Improving JavaScript efficiency
 
 3. **Accessibility Improvements**
+
    - Ensuring WCAG compliance
    - Enhancing keyboard navigation
    - Improving screen reader compatibility
@@ -138,18 +146,21 @@ During the design_mode phase, we are focusing on:
 ## Project Roadmap
 
 ### Phase 1: Design Mode (Current)
+
 - Complete all front-end pages
 - Refine UI/UX
 - Optimize performance
 - Improve accessibility
 
 ### Phase 2: Backend Integration (Future)
+
 - Set up backend services
 - Implement user authentication
 - Create product database
 - Integrate payment processing
 
 ### Phase 3: Launch Preparation (Future)
+
 - Final testing
 - SEO optimization
 - Analytics implementation
@@ -157,4 +168,4 @@ During the design_mode phase, we are focusing on:
 
 ## License
 
-© 2025 Lionel Bamford. All rights reserved. 
+© 2025 Lionel Bamford. All rights reserved.

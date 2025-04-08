@@ -1,61 +1,61 @@
 /* Hero Section */
 .hero {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 500px;
-    text-align: center;
-    margin: 40px 0 60px;
-    overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 500px;
+  text-align: center;
+  margin: 40px 0 60px;
+  overflow: hidden;
 }
 
 .hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
 }
 
 .hero-video::-webkit-media-controls {
-    opacity: 0;
-    transition: opacity 0.3s;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
 .hero-video:hover::-webkit-media-controls {
-    opacity: 1;
+  opacity: 1;
 }
 
 /* For Firefox */
 .hero-video {
-    opacity: 1;
+  opacity: 1;
 }
 
 .hero-video:not(:hover) {
-    opacity: 1;
+  opacity: 1;
 }
 
 .hero-content {
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 30px 50px;
-    border-radius: 4px;
-    backdrop-filter: blur(5px);
-    z-index: 1;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 30px 50px;
+  border-radius: 4px;
+  backdrop-filter: blur(5px);
+  z-index: 1;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
-    font-weight: 400;
-    margin-bottom: 10px;
-    color: #333;
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #333;
 }
 
 .hero h2 {
-    font-size: 1.5rem;
-    font-weight: 300;
-    color: #444;
-} 
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #444;
+}

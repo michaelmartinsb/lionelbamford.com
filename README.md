@@ -35,6 +35,7 @@ lionelbamford.com/
 │       └── footer.css        # Footer styles
 ├── js/                       # JavaScript files
 │   ├── main.js               # Main JavaScript file
+│   ├── animations.js         # Advanced animation effects
 │   ├── cart.js               # Shopping cart functionality
 │   ├── search.js             # Search functionality
 │   └── newsletter.js         # Newsletter signup functionality
@@ -57,6 +58,16 @@ lionelbamford.com/
 - Search functionality with debounced input
 - Mobile-friendly navigation
 - Smooth scrolling and animations
+- Advanced visual effects and interactions:
+  - Parallax scrolling sections
+  - Scroll-driven animations and reveals
+  - Duotone and gradient image treatments
+  - Kinetic typography with split text animations
+  - Magnetic elements that follow cursor movement
+  - Magazine-style editorial layouts
+  - Masonry image galleries
+  - Shop-the-look hotspot functionality
+  - Interactive product showcases with zoom effects
 
 ### In Progress
 
@@ -112,9 +123,40 @@ For local development, you can use any web server, such as:
 The website includes several JavaScript modules:
 
 - **main.js**: Core functionality including animations, mobile menu, and scroll effects
+- **animations.js**: Advanced animations including parallax, kinetic typography, and scroll-driven effects
 - **cart.js**: Shopping cart operations with local storage persistence
 - **newsletter.js**: Newsletter signup with validation and success/error messages
 - **search.js**: Search functionality with debounced input and results display
+
+## Visual Techniques
+
+The website employs several modern visual techniques:
+
+1. **Advanced CSS Effects**
+
+   - CSS blend modes for duotone effects
+   - CSS masking for creative text effects
+   - Gradient overlays with mix-blend-mode
+   - Staggered reveal animations
+
+2. **Scroll-Driven Animations**
+
+   - Elements that reveal, scale, or transform based on scroll position
+   - Parallax backgrounds at varying speeds
+   - Staggered sequence animations triggered by scrolling
+
+3. **Editorial Design Patterns**
+
+   - Magazine-style layouts using CSS Grid
+   - Masonry galleries for visual content
+   - Interactive hotspots for product showcases
+   - Text animations inspired by print design
+
+4. **Microinteractions**
+   - Tactile button feedback
+   - Hover lift effects
+   - Pulse animations
+   - Magnetic text elements that follow cursor movement
 
 ## Design Mode Focus Areas
 
@@ -165,6 +207,35 @@ During the design_mode phase, we are focusing on:
 - SEO optimization
 - Analytics implementation
 - Launch preparation
+
+## Implementation Notes
+
+### Using Advanced Animations
+
+The website uses several advanced animation techniques that require no JavaScript libraries:
+
+- **Split Text Animation**: Text is split into individual characters or words for staggered animations
+- **Parallax Effect**: Elements move at different speeds during scrolling for depth
+- **Intersection Observer**: Used for efficiently triggering animations when elements enter the viewport
+- **CSS Variables**: Used for consistent timing and easing functions
+
+### Magazine-Style Layouts
+
+For editorial sections, we use CSS Grid to create magazine-style layouts with:
+
+- Feature images with captions
+- Sidebar content areas
+- Balanced asymmetrical grids
+- Interactive hotspots for product showcases
+
+### Performance Considerations
+
+Despite the rich visual effects, performance remains a priority:
+
+- Animations are triggered only when elements are in view
+- CSS transforms and opacity are used for smoother animations
+- `will-change` property is used selectively for optimized rendering
+- Image treatments are applied using CSS rather than pre-processing images
 
 ## License
 

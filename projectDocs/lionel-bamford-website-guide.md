@@ -523,7 +523,7 @@ Every HTML element is treated as a box with content, padding, border, and margin
 |  |  +------------+  |  |
 |  |  |  Padding   |  |  |
 |  |  |  +------+  |  |  |
-|  |  |  |Content|  |  |  |
+|  |  |  |Content| |  |  |
 |  |  |  +------+  |  |  |
 |  |  +------------+  |  |
 |  +------------------+  |

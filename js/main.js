@@ -145,6 +145,44 @@ document.addEventListener("DOMContentLoaded", () => {
     const clone = marqueeContent.cloneNode(true);
     document.querySelector(".marquee-container").appendChild(clone);
   }
+
+  // Form handling
+  const contactForm = document.getElementById('contact-form');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(contactForm);
+      const data = Object.fromEntries(formData.entries());
+      
+      // Simple form validation
+      if (!data.name || !data.email || !data.message) {
+        alert('Please fill in all fields');
+        return;
+      }
+      
+      // Here you would typically send the data to a server
+      console.log('Form submitted:', data);
+      alert('Thank you for your message!');
+      contactForm.reset();
+    });
+  }
+
+  // Simple smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
 });
 
 // Navigation active state
